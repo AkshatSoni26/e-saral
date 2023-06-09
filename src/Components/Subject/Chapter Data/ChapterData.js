@@ -1,19 +1,32 @@
-import React, { createContext, useContext } from 'react'
+import React, { createContext, useContext, useEffect } from 'react'
 import RevisePractiseButton from './RevisePractiseButton'
 
 import { context_data_2 } from '../SubjectData.js'
 
 import ChapterSlider from './Chapter Data Dependience/Learn Depen/ChapterSlider'
 import LearnPortionHeader from './Chapter Data Dependience/Learn Depen/LearnPortionHeader'
+import { useDispatch } from 'react-redux'
+import { actionCreators } from '../../../redux'
 
 
 const ChapterData_1 = createContext();
 
 
-export default function ChapterData() {
+export default function ChapterData(props) {
 
     const response = useContext(context_data_2);
 
+    const dispatch = useDispatch(); // for giving data to redux store 
+
+    useEffect(
+     
+            () => {
+                dispatch(actionCreators.buttonsData(response.response))
+            }
+        , []
+    )
+
+    console.log('ButtonsDataHandler' ,props )
 
     console.log('id', response.id)
     console.log('ChapterData',response)

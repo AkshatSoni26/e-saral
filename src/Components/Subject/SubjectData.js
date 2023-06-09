@@ -84,7 +84,7 @@ function SubjectData() {
             <div className='text-center' id="user_id" > Loading...</div >
             :
             <>
-                
+
                 <SubjectHeader />
 
 
@@ -106,7 +106,6 @@ function SubjectData() {
                             (response, i) => (
                                 <div key={i}>
                                     <context_data_2.Provider value={{ response: response, key: i, id: i }}>
-
 
                                         <ChapterData />
 

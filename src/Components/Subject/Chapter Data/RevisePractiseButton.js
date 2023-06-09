@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import 'C:/Users/eSaral/Documents/verification_login/src/Components/CSS/Header.css'
 
 import { context_data_2 } from '../SubjectData';
+import { useSelector } from 'react-redux';
 
 
 // const dataForButtons = createContext();
@@ -11,11 +12,13 @@ import { context_data_2 } from '../SubjectData';
 
 export default function RevisepractiseButton() {
 
+    const  state = useSelector( state => state.data) // for taking data from redux store
+
     const navigate = useNavigate();                  
 
     const chapterData = useContext(context_data_2);
 
-    console.log("RevisePractics Button", chapterData)
+    console.log("RevisePractics Button ", chapterData)
 
 
     return (
@@ -25,15 +28,15 @@ export default function RevisepractiseButton() {
             {/* {console.log('practise under button', value)} */}
 
 
-            <a onClick={() => navigate('/test', { state:  {chapterData:chapterData,defi:'practise'}}) }>
+            <a onClick={() => {console.log("practicse button clicked")} }>
                 practise
             </a>
 
-            <a onClick={() => navigate('/test', { state: {chapterData:chapterData,defi:'revise'}})}>
+            <a onClick={() => {console.log("revise button clicked")}}>
                 revise
             </a>
 
-            <a onClick={() => navigate('/test', { state: {chapterData:chapterData,defi:'test'}})}>
+            <a onClick={() => {console.log("test button clicked")} }>
                 test
             </a>
         </div>

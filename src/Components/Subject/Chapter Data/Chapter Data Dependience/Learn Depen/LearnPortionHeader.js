@@ -27,7 +27,7 @@ export default function LearnPortionHeader() {
   return (
 
 <>
-    <a onClick={() => navigate('/test', {state:{data:chapterData, defi: 'learn'}} )  }>
+    <a onClick={() => {console.log("Header is clicked")}  }>
     <div style={{display: "flex"}}  paddingTop= "10px" >
                 <h3>{chapter_name}</h3>
                 <h6 style={{ paddingLeft: "800px" }}>Total Lectures:{total_lectures}  
