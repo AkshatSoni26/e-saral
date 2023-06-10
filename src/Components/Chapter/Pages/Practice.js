@@ -32,56 +32,60 @@ export default function Practice() {
 
                       return (
 
-                        <div>
+                        <div class="container-fluid">
 
-                          <h2>{item_2.display_name}</h2>
+                          <div class="row gy-4 justify-content-center">
 
-                          {/* {console.log("item_2.display_name", item_2.display_name)}
+                            <h2>{item_2.display_name}</h2>
+
+                            {/* {console.log("item_2.display_name", item_2.display_name)}
 
                           {console.log('item_2.sheet_content', item_2.sheet_content)} */}
 
-                          {
-                            (item_2.sheet_content).map(
-                              (item_3, k) => {
-                                return (
+                            {
+                              (item_2.sheet_content).map(
+                                (item_3, k) => {
+                                  return (
 
-                                  <div>
-                                    {/* <h2>item_2.display_name {item_3.display_name}</h2> */}
-                                    {/* <h5> item_2.description {item_3.description}</h5>  */}
+                                    <div  class="col-xl-3 col-lg-4 col-md-6">
+                                      {/* <h2>item_2.display_name {item_3.display_name}</h2> */}
+                                      {/* <h5> item_2.description {item_3.description}</h5>  */}
 
-                                    <h4>{item_3.display_name}</h4>
-                                    <p>{item_3.description}</p>
+                                      <h4>{item_3.display_name}</h4>
+                                      <p>{item_3.description}</p>
 
 
-                                    {console.log('item_3', item_3)}
+                                      {console.log('item_3', item_3)}
 
-                                    {
-                                      (item_3.content_data.content_type == "PDF")
+                                      {
+                                        (item_3.content_data.content_type == "PDF")
 
-                                        ?
+                                          ?
 
-                                        <div>
-                                          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/121px-PDF_file_icon.svg.png" alt={item_3.content_data.content_info.name} />
-                                          <p>{item_3.content_data.content_info.name}</p>
-                                        </div>
+                                          <div>
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/121px-PDF_file_icon.svg.png"
+                                              alt={item_3.content_data.content_info.name} className="img-fluid" />
 
-                                        :
-                                        <>
-                                          <img src={item_3.content_data.content_info.thumbnail} />
-                                          <h5>{item_3.content_data.content_info.name}</h5>
-                                        </>
-                                    }
-                                    <br />
-                                  </div>
+                                            <p>{item_3.content_data.content_info.name}</p>
+                                          </div>
 
-                                )
-                              }
-                            )
+                                          :
+                                          <div class="col-xl-3 col-lg-4 col-md-6">
+                                            <img src={item_3.content_data.content_info.thumbnail} className="img-fluid" />
+                                            <h5>{item_3.content_data.content_info.name}</h5>
+                                          </div>
+                                      }
+                                      <br />
+                                    </div>
 
-                          }
+                                  )
+                                }
+                              )
 
-                          <br /><br /><br />
+                            }
 
+                            <br /><br /><br />
+                          </div>
                         </div>
 
 
