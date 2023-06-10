@@ -39,22 +39,6 @@ export default function Header2() {
 
 
 
-    const dict = {
-        'learn': <Learn data={data} />,
-        'practice': <Practice data={data} />,
-        'revise': <Revise data={data} />,
-        'test': <Test data={data} />
-    }
-
-    // function SubjectDataLoader(a) {
-    //     console.log(`${a} clicked`)
-
-    //     document.getElementById("Button-info").innerHTML = dict[a]
-
-    // }
-
-
-
     return (
         <>
 
@@ -64,23 +48,23 @@ export default function Header2() {
 
                 <div className='heading'>
 
-                    <a className='button_effect' onClick={() => setDataState('learn')}>
+                    <a className='button_effect' onClick={() => console.log(' learn Button clicked')}>
                         Learn
                     </a>
 
-                    <a className='button_effect' onClick={() => setDataState('practice')}>
+                    <a className='button_effect' onClick={() => console.log(' practise Button clicked')}>
                         Practice
                     </a>
 
-                    <a className='button_effect' onClick={() => setDataState('revise')}>
+                    <a className='button_effect' onClick={() => console.log(' revise Button clicked')}>
                         Revise
                     </a>
 
-                    <a className='button_effect' onClick={() => setDataState('test')}>
+                    <a className='button_effect' onClick={() =>console.log(' test Button clicked')}>
                         Test
                     </a>
 
-                    {
+                    {/* {
                         (dataState === 'learn') &&
 
                         <div id='Button-info'>  {dict['learn']} </div>
@@ -106,7 +90,7 @@ export default function Header2() {
 
                         <div id='Button-info'>  {dict['test']} </div>
 
-                    }
+                    } */}
 
 
 

@@ -8,6 +8,7 @@ import './Learn.css'
 // import { ChapterData_1 } from '../../Subject/Chapter Data/ChapterData'
 
 import { context_data_2 } from '../../Subject/SubjectData'
+import ScrollBAr from '../ComponentsOfChapeters/ScrollBAr'
 
 
 
@@ -25,6 +26,8 @@ export default function Learn() {
   return (
       
     <div>
+
+      
 
       <div >
         <div className='container-fluid'>

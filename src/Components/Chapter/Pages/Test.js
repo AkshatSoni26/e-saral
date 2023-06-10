@@ -4,7 +4,11 @@ import Learn from './Learn';
 import Practice from './Practice';
 import Revise from './Revise';
 import TestPage from './TestPage';
+import Header2 from '../ComponentsOfChapeters/Header2';
+import ScrollBAr from '../ComponentsOfChapeters/ScrollBAr';
 // import TestPage from './TestPage';
+
+import 'C:/Users/eSaral/Documents/verification_login/src/Components/CSS/carsoul.css'
 
 
 export default function Test() {
@@ -38,8 +42,8 @@ export default function Test() {
       }
 
       //Updating Data
-      else if ( (((JSON.parse(sessionStorage.getItem("chapter data"))).chapter_name) != location.state.chapter_name) || 
-      (((JSON.parse(sessionStorage.getItem("chapter data"))).ButtonClicked) != location.state.ButtonClicked) ) {
+      else if ((((JSON.parse(sessionStorage.getItem("chapter data"))).chapter_name) != location.state.chapter_name) ||
+        (((JSON.parse(sessionStorage.getItem("chapter data"))).ButtonClicked) != location.state.ButtonClicked)) {
         sessionStorage.removeItem("chapter data")
         console.log('item is remove and now updatng data ')
         console.log(" else if porion is run", location.state)
@@ -66,32 +70,30 @@ export default function Test() {
 
 
   return (
-   <div>
 
-      {
-        
-        (!data) ? 
-        
-        (<div>Loading...</div>)
-:
-                  
-                  <>
+    (!data) ?
 
-{data.ButtonClicked == 'header' && <Learn />}
-                  
-{data.ButtonClicked == 'practise' && <Practice />}
+      (<div>Loading...</div>)
+      :
 
-{ data.ButtonClicked == "revise" && <Revise /> }
+      <div>
+        <div>
+          <Header2 />
+        </div>
 
- {data.ButtonClicked == 'test' && <TestPage />}
-                  
-                  </>
+        <div className='chapter-components'>
 
-              
+          {data.ButtonClicked == 'header' && <Learn />}
 
-          }
+          {data.ButtonClicked == 'practise' && <Practice />}
 
-    </div>
+          {data.ButtonClicked == "revise" && <Revise />}
+
+          {data.ButtonClicked == 'test' && <TestPage />}
+
+        </div>
+
+      </div>
   );
 };
 

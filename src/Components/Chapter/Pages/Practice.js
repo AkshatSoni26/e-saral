@@ -1,9 +1,5 @@
 import React, { useContext } from 'react'
-// import PagesHeader from '../ComponentsOfChapeters/PagesHeader'
-import { useLocation } from 'react-router-dom'
 
-import SubjectHeader from '../../Subject/SubjectHeader';
-import Header2 from '../ComponentsOfChapeters/Header2';
 
 export default function Practice() {
 
@@ -20,7 +16,7 @@ export default function Practice() {
   return (
     <>
 
-      <div>Practics</div>
+      {/* <div>Practics</div> */}
 
       <div>
         {
@@ -38,11 +34,11 @@ export default function Practice() {
 
                         <div>
 
-                          <h1>{item_2.display_name}</h1>
+                          <h2>{item_2.display_name}</h2>
 
-                          {console.log("item_2.display_name", item_2.display_name)}
+                          {/* {console.log("item_2.display_name", item_2.display_name)}
 
-                          {console.log('item_2.sheet_content', item_2.sheet_content)}
+                          {console.log('item_2.sheet_content', item_2.sheet_content)} */}
 
                           {
                             (item_2.sheet_content).map(
@@ -50,8 +46,12 @@ export default function Practice() {
                                 return (
 
                                   <div>
-                                    <h2>item_2.display_name {item_3.display_name}</h2>
-                                    <h5> item_2.description {item_3.description}</h5> 
+                                    {/* <h2>item_2.display_name {item_3.display_name}</h2> */}
+                                    {/* <h5> item_2.description {item_3.description}</h5>  */}
+
+                                    <h4>{item_3.display_name}</h4>
+                                    <p>{item_3.description}</p>
+
 
                                     {console.log('item_3', item_3)}
 
@@ -62,15 +62,16 @@ export default function Practice() {
 
                                         <div>
                                           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/121px-PDF_file_icon.svg.png" alt={item_3.content_data.content_info.name} />
-                                          <h4>{item_3.content_data.content_info.name}</h4>
+                                          <p>{item_3.content_data.content_info.name}</p>
                                         </div>
 
                                         :
-<>
-                                        <img src={item_3.content_data.content_info. thumbnail} />
-                                        <h5>{item_3.content_data.content_info.name}</h5>
-</>
+                                        <>
+                                          <img src={item_3.content_data.content_info.thumbnail} />
+                                          <h5>{item_3.content_data.content_info.name}</h5>
+                                        </>
                                     }
+                                    <br />
                                   </div>
 
                                 )
@@ -79,17 +80,24 @@ export default function Practice() {
 
                           }
 
+                          <br /><br /><br />
+
                         </div>
+
+
                       )
 
                     }
                   )
+
+
                 )
               }
 
             }
           )
         }
+
       </div>
 
     </>
