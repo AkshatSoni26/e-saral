@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom'
 import Learn from './Learn';
 import Practice from './Practice';
 import Revise from './Revise';
+import TestPage from './TestPage';
 // import TestPage from './TestPage';
 
 
@@ -82,7 +83,7 @@ export default function Test() {
 
 { data.ButtonClicked == "revise" && <Revise /> }
 
- {/* {data.ButtonClicked == 'test' && <TestPage />} */}
+ {data.ButtonClicked == 'test' && <TestPage />}
                   
                   </>
 
