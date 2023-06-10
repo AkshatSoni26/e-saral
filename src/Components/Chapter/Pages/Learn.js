@@ -1,4 +1,4 @@
-import React, { useContext} from 'react'
+import React, { useContext } from 'react'
 
 
 import { useLocation } from 'react-router-dom'
@@ -9,25 +9,22 @@ import './Learn.css'
 
 import { context_data_2 } from '../../Subject/SubjectData'
 
+
+
 export default function Learn() {
 
-  const location = useLocation()
+  const dataFromSession = sessionStorage.getItem("chapter data") // Taking data from storage
 
-  // const data = useContext(context_data_2)
+  const dataConver = JSON.parse(dataFromSession) // Converting data from json to Object
 
-  console.log('In Learn portion', location.state.data.content.learn  )
+  console.log("we are under the Learn components", dataConver.chapterData.content.learn)
 
-  const learn_data = location.state.data.content.learn 
+  const learn_data = dataConver.chapterData.content.learn
 
-
-  // console.log('state - learn', location.state.chapter_data[0].content_data.content_info.thumbnail)
 
   return (
-    <>
-    {/* <div>
-      Learn
       
-    </div> */}
+    <div>
 
       <div >
         <div className='container-fluid'>
@@ -41,9 +38,9 @@ export default function Learn() {
                     <div className='col-xl-3 col-lg-4 col-md-6'>
                       <div className='gallery-item h-100'>
                         <div  >
-                          <img src={ data.content_data.content_info.thumbnail} className="img-fluid" alt="" />
+                          <img src={data.content_data.content_info.thumbnail} className="img-fluid" alt="" />
                         {data.display_name}
-                        {console.log('data',data.content_data.content_info.thumbnail)}
+                          {console.log('data', data.content_data.content_info.thumbnail)}
                         </div>
                       </div>
                     </div>
@@ -58,6 +55,6 @@ export default function Learn() {
         </div>
       </div >
 
-    </>
+    </div>
   )
 }

@@ -35,13 +35,13 @@ function App() {
 
       {/* <Route path="/:subjectName/:chapterName" element={<SubjectData />} /> */}
 
-      {/* <Route path="/learn" element={<Learn />} />
+      {/* <Route path="/learn" element={<Learn />} /> */}
      
-     <Route path="/practise" element={<Practice />} />
-      <Route path="/revise" element={<Revise />} />
-      <Route path="/test" element={<Test />} /> */}
+     {/* <Route path="/practise" element={<Practice />} /> */}
+      {/* <Route path="/revise" element={<Revise />} /> */}
+      <Route path="/test" element={<Test />} /> 
 
-      <Route path="/test" element={<Header2 />} />
+      {/* <Route path="/test" element={<Header2 />} /> */}
 
     </Routes>
 

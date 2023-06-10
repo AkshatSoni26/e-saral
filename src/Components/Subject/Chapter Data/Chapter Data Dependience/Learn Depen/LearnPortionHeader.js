@@ -10,7 +10,7 @@ export default function LearnPortionHeader() {
 
   const chapterData = useContext(ChapterData_1);
 
-  console.log("LearnPortionHeader",chapterData)
+  console.log("Data in Learn Portion Header",chapterData)
 
   const chapter_name =chapterData.display_name
   const total_lectures =chapterData.content.learn.length
@@ -24,10 +24,19 @@ export default function LearnPortionHeader() {
 
   console.log("chapter_data", chapterData)
 
+  function navi() {
+    console.log('Learn Portion Header Navigate')
+
+    navigate("/test", { state : { chapterData : chapterData, 
+      chapter_name : chapter_name, 
+      ButtonClicked : "header"}})
+
+  }
+
   return (
 
 <>
-    <a onClick={() => {console.log("Header is clicked")}  }>
+    <a onClick={ navi  }>
     <div style={{display: "flex"}}  paddingTop= "10px" >
                 <h3>{chapter_name}</h3>
                 <h6 style={{ paddingLeft: "800px" }}>Total Lectures:{total_lectures}  

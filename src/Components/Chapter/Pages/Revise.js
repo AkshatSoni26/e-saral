@@ -7,18 +7,21 @@ import Header2 from '../ComponentsOfChapeters/Header2';
 
 export default function Revise() {
 
-  const location = useLocation();
-  console.log("revise", location.state.data.content.revise)
+  const dataFromSession = sessionStorage.getItem("chapter data") // Taking data from storage
 
-  const revise_data = location.state.data.content.revise
+  const dataConver = JSON.parse(dataFromSession) // Converting data from json to Object
+
+  console.log("we are under the revise components", dataConver.chapterData.content.revise  )
+
+  const revise_data = dataConver.chapterData.content.revise
 
   return (
 
     <>
 
-      <div>
+      {/* <div>
         Revise
-      </div>
+      </div> */}
 
       <div>
 

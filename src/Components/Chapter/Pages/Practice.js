@@ -7,14 +7,14 @@ import Header2 from '../ComponentsOfChapeters/Header2';
 
 export default function Practice() {
 
-  // const but_data = useContext(button_context)
+  const dataFromSession = sessionStorage.getItem("chapter data") // Taking data from storage
 
-  // console.log('button_context', but_data)
+  const dataConver = JSON.parse(dataFromSession) // Converting data from json to Object
 
-  const location = useLocation();
-  console.log("practise", location.state.data.content.practise)
+  console.log("we are under the Learn components", dataConver.chapterData.content.practise)
 
-  const practise_data = location.state.data.content.practise
+  const practise_data = dataConver.chapterData.content.practise
+
 
 
   return (
@@ -51,7 +51,7 @@ export default function Practice() {
 
                                   <div>
                                     <h2>item_2.display_name {item_3.display_name}</h2>
-                                    {/* <h5> item_2.description {item_3.description}</h5> */}
+                                    <h5> item_2.description {item_3.description}</h5> 
 
                                     {console.log('item_3', item_3)}
 

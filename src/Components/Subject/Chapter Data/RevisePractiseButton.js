@@ -3,46 +3,73 @@ import React, { createContext, useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import 'C:/Users/eSaral/Documents/verification_login/src/Components/CSS/Header.css'
 
-import { context_data_2 } from '../SubjectData';
+// import { context_data_2 } from '../SubjectData';
 import { useSelector } from 'react-redux';
 
 
-// const dataForButtons = createContext();
+import { ChapterData_1 } from './ChapterData';
 
 
 export default function RevisepractiseButton() {
 
-    const  state = useSelector( state => state.data) // for taking data from redux store
+    // const  state = useSelector( state => state.data) // for taking data from redux store
 
     const navigate = useNavigate();                  
 
-    const chapterData = useContext(context_data_2);
+    const chapterData = useContext(ChapterData_1);
 
-    console.log("RevisePractics Button ", chapterData)
+    const chapter_name = chapterData.display_name
 
+    console.log("Revise Practics Test Button data", chapterData)
 
     return (
 
-        <div id='button' >
+        <div id=' subject-button' >
 
             {/* {console.log('practise under button', value)} */}
 
 
-            <a onClick={() => {console.log("practicse button clicked")} }>
+            <a className='btn btn-outline-primary' onClick={() => navigate("/test", {
+                state: {
+                    chapterData: chapterData,
+                    chapter_name: chapter_name,
+                    ButtonClicked: "practise"
+                }
+            })
+            } >
                 practise
             </a>
 
-            <a onClick={() => {console.log("revise button clicked")}}>
+
+            <a className='btn btn-outline-primary' onClick={
+                () => navigate("/test", {
+                    state: {
+                        chapterData: chapterData,
+                        chapter_name: chapter_name,
+                        ButtonClicked: "revise"
+                    }
+                })
+            }>
                 revise
             </a>
 
-            <a onClick={() => {console.log("test button clicked")} }>
+
+            <a className='btn btn-outline-primary' onClick={
+                () => navigate("/test", {
+                    state: {
+                        chapterData: chapterData,
+                        chapter_name: chapter_name,
+                        ButtonClicked: "test"
+                    }
+                })
+            }>
                 test
             </a>
         </div>
 
     )
-}
+};
+
 
 
 
