@@ -9,7 +9,7 @@ import { header_data } from './User/UserUi';
 import Learn from './Chapter/Pages/Learn';
 import Practice from './Chapter/Pages/Practice';
 import Revise from './Chapter/Pages/Revise';
-import Test from './Chapter/Pages/Test';
+import Test from 'C:/Users/eSaral/Documents/verification_login/src/Components/Chapter/Pages/Test.js'
 // import Chapter from './Chapter/Chapter';
 import Header2 from './Chapter/ComponentsOfChapeters/Header2';
 
@@ -39,9 +39,9 @@ function App() {
      
      {/* <Route path="/practise" element={<Practice />} /> */}
       {/* <Route path="/revise" element={<Revise />} /> */}
-      <Route path="/test" element={<Test />} /> 
+      <Route path="/Content" element={<Test />} /> 
 
-      {/* <Route path="/test" element={<Header2 />} /> */}
+      {/* <Route path="/Content" element={<Header2 />} /> */}
 
     </Routes>
 

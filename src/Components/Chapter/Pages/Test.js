@@ -3,10 +3,10 @@ import { useLocation } from 'react-router-dom'
 import Learn from './Learn';
 import Practice from './Practice';
 import Revise from './Revise';
-import TestPage from './TestPage';
+import TestPage from 'C:/Users/eSaral/Documents/verification_login/src/Components/Chapter/Pages/TestPage.js'
 import Header2 from '../ComponentsOfChapeters/Header2';
 import ScrollBAr from '../ComponentsOfChapeters/ScrollBAr';
-// import TestPage from './TestPage';
+// import TestPage from './ContentPage';
 
 import 'C:/Users/eSaral/Documents/verification_login/src/Components/CSS/carsoul.css'
 

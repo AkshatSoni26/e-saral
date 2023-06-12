@@ -11,7 +11,7 @@ const Links = () => {
 
     {/* <Link to="/practise"></Link>
     <Link to="/revise"></Link> */}
-    <Link to="/test"></Link>
+    <Link to="/Content"></Link>
 
     {/* <Link to="/*"></Link> */}
 

@@ -19,7 +19,7 @@ export default function LearnPortionHeader() {
   const navigate = useNavigate()
 
   // function navi() {
-  //   navigate("/test" )
+  //   navigate("/Content" )
   // }
 
   console.log("chapter_data", chapterData)
@@ -27,7 +27,7 @@ export default function LearnPortionHeader() {
   function navi() {
     console.log('Learn Portion Header Navigate')
 
-    navigate("/test", { state : { chapterData : chapterData, 
+    navigate("/Content", { state : { chapterData : chapterData, 
       chapter_name : chapter_name, 
       ButtonClicked : 'learn'}})
 

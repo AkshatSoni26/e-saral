@@ -13,7 +13,7 @@ import { ChapterData_1 } from '../../Subject/Chapter Data/ChapterData';
 import Learn from '../Pages/Learn';
 import Practice from '../Pages/Practice';
 import Revise from '../Pages/Revise';
-import Test from '../Pages/Test';
+import Test from 'C:/Users/eSaral/Documents/verification_login/src/Components/Chapter/Pages/Test.js';
 
 
 export default function Header2() {
@@ -49,7 +49,7 @@ export default function Header2() {
 
         console.log('testing data is work properly or not',data)
 
-        navigate('/test', {
+        navigate('/Content', {
             state: data
         }
         ) 

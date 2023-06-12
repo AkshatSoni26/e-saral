@@ -45,7 +45,7 @@ export default function RevisepractiseButton() {
                         {/* {console.log('practise under button', value)} */}
 
                         <a className='btn btn-outline-primary three-d' style={a_tag_style}
-                        onClick={() => navigate("/test", {
+                        onClick={() => navigate("/Content", {
                             state: {
                                 chapterData: chapterData,
                                 chapter_name: chapter_name,
@@ -59,7 +59,7 @@ export default function RevisepractiseButton() {
 
                         <a className='btn btn-outline-primary three-d ' style={a_tag_style}
                         onClick={
-                            () => navigate("/test", {
+                            () => navigate("/Content", {
                                 state: {
                                     chapterData: chapterData,
                                     chapter_name: chapter_name,
@@ -73,7 +73,7 @@ export default function RevisepractiseButton() {
 
                         <a className='btn btn-outline-primary three-d ' style={a_tag_style}
                         onClick={
-                            () => navigate("/test", {
+                            () => navigate("/Content", {
                                 state: {
                                     chapterData: chapterData,
                                     chapter_name: chapter_name,
@@ -98,7 +98,7 @@ export default function RevisepractiseButton() {
 
 
 // <
-//              href='/test'
+//              href='/Content'
 //             style={{ paddingRight: "1px", paddingLeft: "1px", borderRightWidth: "1px", marginRight: 15, marginLeft: "30px", }}>
 //             <button type="button" className="btn btn-outline-primary">
 //                 <label style={{ paddingLeft: "50px", paddingRight: "78px", }}>test</label></button>
