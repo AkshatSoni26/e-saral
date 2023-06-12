@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/Container';
 import { authFunction } from 'C:/Users/eSaral/Documents/verification_login/src/Components/Login I Logout/Logout.js';
 import { useNavigate } from 'react-router-dom';
 import '../CSS/Header.css'
+import Header from '../Header';
 
 
 export default function SubjectHeader() {
@@ -14,26 +15,28 @@ export default function SubjectHeader() {
 
     return (
 
-        <div className='sticky '>
-            <Navbar bg="dark" expand="lg">
+        <Header />
 
-                <Container>
+        // <div className='sticky '>
+        //     <Navbar bg="dark" expand="lg">
 
-                    <Navbar.Brand className='text-light' href="/">e-saral</Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="btn">
+        //         <Container>
 
-                            <Nav.Link style={header_style} className='text-light' href="/" >Home</Nav.Link>
+        //             <Navbar.Brand className='text-light' href="/">e-saral</Navbar.Brand>
+        //             <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        //             <Navbar.Collapse id="basic-navbar-nav">
+        //                 <Nav className="btn">
 
-                            <Nav.Link className='text-light' href="/login" onClick={() => { authFunction.Logout(navigate) }}>Logout</Nav.Link>
+        //                     <Nav.Link style={header_style} className='text-light' href="/" >Home</Nav.Link>
+
+        //                     <Nav.Link className='text-light' href="/login" onClick={() => { authFunction.Logout(navigate) }}>Logout</Nav.Link>
 
 
-                        </Nav>
-                    </Navbar.Collapse>
+        //                 </Nav>
+        //             </Navbar.Collapse>
 
-                </Container>
-            </Navbar>
-        </div>
+        //         </Container>
+        //     </Navbar>
+        // </div>
     )
 }

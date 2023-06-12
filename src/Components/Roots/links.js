@@ -9,11 +9,9 @@ const Links = () => {
     <Link to="/"></Link>
     <Link to="/:subjectName"></Link>
 
-    {/* <Link to="/practise"></Link>
-    <Link to="/revise"></Link> */}
     <Link to="/Content"></Link>
 
-    {/* <Link to="/*"></Link> */}
+    <Link to="/edit"></Link>
 
     </>
   )

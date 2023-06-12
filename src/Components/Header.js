@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -14,7 +14,43 @@ export default function Header(props) {
 
     const navigate = useNavigate();
 
+    const [uData, setUdata] = useState();
+
+
+    console.log('data of Header',props)
+
+    useEffect(
+        () => {
+
+    if (!sessionStorage.getItem('info')) {
+        
+        const EnrollAndProf = sessionStorage.setItem('info',JSON.stringify(props))
+
+        const info = {c_name : props.enrollment.course_name, 
+            u_name : props.profile.full_name}
+
+        setUdata(info)
+    }
+
+    else {
+        const UdataFromSessionS = JSON.parse(sessionStorage.getItem('info'))
+        
+        const info = {c_name : UdataFromSessionS.enrollment.course_name, 
+            u_name : UdataFromSessionS.profile.full_name}
+
+        setUdata(info)
+    }
+}, []
+    )
+
     return (
+
+        (!uData) ? 
+
+        <div>Loading . . . </div>
+
+        :
+
         <div className='sticky'>
 
             <Navbar className="text-light" bg="dark" expand="lg">
@@ -30,8 +66,8 @@ export default function Header(props) {
                     </Navbar.Collapse>
 
                     <div style={{ paddingLeft: 100 }} > 
-                        <h3>{props.enrollment.course_name}</h3>
-                        <b>Hi, {props.profile.full_name} 👋 </b>
+                        <h3>{uData.c_name}</h3>
+                        <b>Hi, {uData.u_name} 👋 </b>
                     </div>
 
                     <Nav.Link  className='text-light'   href="/login" onClick={() => { authFunction.Logout(navigate) }}>Logout</Nav.Link>
