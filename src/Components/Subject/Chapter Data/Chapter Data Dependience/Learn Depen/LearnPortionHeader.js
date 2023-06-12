@@ -29,7 +29,7 @@ export default function LearnPortionHeader() {
 
     navigate("/test", { state : { chapterData : chapterData, 
       chapter_name : chapter_name, 
-      ButtonClicked : "header"}})
+      ButtonClicked : 'learn'}})
 
   }
 

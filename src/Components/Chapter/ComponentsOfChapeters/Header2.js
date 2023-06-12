@@ -20,22 +20,43 @@ export default function Header2() {
 
     // const data = useContext(ChapterData_1)
 
-    const [dataState, setDataState] = useState('learn');
+    // const [dataState, setDataState] = useState('learn');
 
-    
+    const navigate = useNavigate();
+
+
     // const navigate = useNavigate()
     const location = useLocation();
-    
+
     const data = location.state.defi
     console.log("Header 2 data", data)
 
     console.log("location", location.state)
 
-    useEffect(
-        () => {
-            setDataState(location.state.defi)
-        }, []
-    )
+    // useEffect(
+    //     () => {
+    //         setDataState(location.state.defi)
+    //     }, []
+    // )
+
+    function TabChange(a) {
+        
+        // const ButtonClicked = a
+
+        const data = JSON.parse(sessionStorage.getItem('chapter data'))
+
+        data["ButtonClicked"] = a
+
+        console.log('testing data is work properly or not',data)
+
+        navigate('/test', {
+            state: data
+        }
+        ) 
+
+        console.log('moving from on tab to another tab and data is as', data )} 
+    
+    
 
 
 
@@ -48,19 +69,19 @@ export default function Header2() {
 
                 <div className='heading'>
 
-                    <a className='button_effect' onClick={() => console.log(' learn Button clicked')}>
+                    <a className='button_effect' onClick={ () => TabChange('learn') }>
                         Learn
                     </a>
 
-                    <a className='button_effect' onClick={() => console.log(' practise Button clicked')}>
+                    <a className='button_effect' onClick={() => TabChange('practise')}>
                         Practice
                     </a>
 
-                    <a className='button_effect' onClick={() => console.log(' revise Button clicked')}>
+                    <a className='button_effect' onClick={() => TabChange('revise')}>
                         Revise
                     </a>
 
-                    <a className='button_effect' onClick={() =>console.log(' test Button clicked')}>
+                    <a className='button_effect' onClick={() => TabChange('test')}>
                         Test
                     </a>
 

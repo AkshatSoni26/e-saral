@@ -83,7 +83,7 @@ export default function Test() {
 
         <div className='chapter-components'>
 
-          {data.ButtonClicked == 'header' && <Learn />}
+          {data.ButtonClicked == 'learn' && <Learn />}
 
           {data.ButtonClicked == 'practise' && <Practice />}
 
