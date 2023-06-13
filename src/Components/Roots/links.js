@@ -11,7 +11,7 @@ const Links = () => {
 
     <Link to="/Content"></Link>
 
-    <Link to="/edit"></Link>
+    <Link to="/profile"></Link>
 
     </>
   )

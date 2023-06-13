@@ -7,8 +7,8 @@ import UserProfile from './User/UserProfile';
 import SubjectData from './Subject/SubjectData';
 
 import Test from 'C:/Users/eSaral/Documents/verification_login/src/Components/Chapter/Pages/Test.js'
-import EditForm from './EditForm/EditForm';
 
+import Profile from './User Account/Profile';
 
 function App() {
 
@@ -26,7 +26,7 @@ function App() {
 
       <Route path="/Content" element={<Test />} /> 
 
-      <Route path="/edit" element ={<EditForm />} />
+      <Route path="/profile" element ={<Profile />} />
 
     </Routes>
 
