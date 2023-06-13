@@ -3,6 +3,8 @@ import "./account.css";
 
 export default function UserInfo({ PROFILE_DATA, ICON_SIZE }) {
   return (
+
+    
     <div>
       <div className="container ProCss">
         <div>
@@ -40,7 +42,7 @@ export default function UserInfo({ PROFILE_DATA, ICON_SIZE }) {
 
           <div className=" container EDIT-BUT">
             <div>
-              <a href="">
+              <a href="/edit">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"

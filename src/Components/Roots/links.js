@@ -12,6 +12,7 @@ const Links = () => {
     <Link to="/Content"></Link>
 
     <Link to="/profile"></Link>
+    <Link to="/edit"></Link>
 
     </>
   )

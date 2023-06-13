@@ -9,6 +9,7 @@ import SubjectData from './Subject/SubjectData';
 import Test from 'C:/Users/eSaral/Documents/verification_login/src/Components/Chapter/Pages/Test.js'
 
 import Profile from './User Account/Profile';
+import Edit from './User Account/Edit';
 
 function App() {
 
@@ -27,6 +28,8 @@ function App() {
       <Route path="/Content" element={<Test />} /> 
 
       <Route path="/profile" element ={<Profile />} />
+
+      <Route path="/edit" element= {<Edit />} />
 
     </Routes>
 

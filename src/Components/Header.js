@@ -59,15 +59,13 @@ export default function Header(props) {
 
       <div>
 
-       
-
       <div className='sticky'>
 
         <Navbar className="text-light" bg="dark" expand="lg">
 
           <Container>
 
-            <Navbar.Brand className='text-light'>e-saral</Navbar.Brand>
+            <Navbar.Brand href='/' className='text-light'>e-saral</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               {/* <Nav className="me-auto">
