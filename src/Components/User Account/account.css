@@ -22,3 +22,40 @@ font-size: large;
     padding-top: 30px  ;
 
 }
+
+.userInfo {
+    display: flex;
+    position: relative;
+    padding-top: 10px ;
+    padding: auto;
+    align-items: center;
+    text-align: center;
+    padding-left: 5%;
+}
+
+.ProCss {
+    padding-top: 85px;
+    display: flex;
+        
+}
+
+.statSty {
+    padding-left: 2%;
+    font-size: x-large;
+    font-weight: bolder;
+    color: black;
+}
+
+img {
+    border-radius: 100%;
+    width: 70px;
+    height: 70px;
+}
+
+.course-name {
+    width: 100%;
+ }
+
+ .proPad {
+    padding-left: 4%;
+ }

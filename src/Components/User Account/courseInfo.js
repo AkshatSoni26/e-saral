@@ -1,7 +1,10 @@
 import React from "react";
-import './account.css'
+import "./account.css";
 
-export default function CourseInfo({ ENROLLMENT_DATA, ICON_SIZE }) {
+export default function CourseInfo({
+    ENROLLMENT_DATA,
+    ICON_SIZE,
+}) {
     const COURSE_SVG = (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -24,67 +27,72 @@ export default function CourseInfo({ ENROLLMENT_DATA, ICON_SIZE }) {
 
     return (
         <div>
-            <div>
-                
+            <div className="container ProCss">
+                <div>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width={ICON_SIZE.width}
+                        height={ICON_SIZE.height}
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="BLACK"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="feather feather-book-open"
+                    >
+                        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                    </svg>
+                </div>
 
-
-
-                <table >
-                    <tbody>
-                    
-                        {
-
-                            ENROLLMENT_DATA.map((data, index) => (
-                                <tr key={index}>
-                                    <td>{COURSE_SVG}</td>
-                                    <tr>
-                                    <div style={{paddingLeft: "10vw"}}>
-                                        <td>
-                                            <td>
-                                                <table>
-
-                                                
-
-                                                    <td>
-                                                        <strong>
-                                                            <span>  {data.course_name}</span>
-                                                        </strong>
-                                                    </td>
-
-                                                  
-
-                                                
-                                                        <td className="enroll"> 
-                                                            <div className="Enrolled">
-<b>
-                                                            {data.is_current === true ? <p>enrolled</p> : null}
-                                                            </b>
-                                                            </div>
-
-                                                        </td>
-                                                   
-                                                </table>
-
-                                            </td>
-                                        
-
-                                            <div>Enrolled On: {data.enroll_date}</div>
-
-                                        </td>
-
-                                        </div>
-                                    </tr>
-                                    <br /><br />
-                                </tr>
-
-                            ))
-
-
-                        }
-
-                    </tbody>
-                </table>
+                <div className="statSty">My Courses</div>
             </div>
+
+            {
+
+                ENROLLMENT_DATA.map(
+                    (data, index) => (
+
+                        <div className="container userInfo">
+                            <div>
+
+                                <img src="https://static.remove.bg/sample-gallery/graphics/bird-thumbnail.jpg"></img>
+
+                            </div>
+
+                            <div className="proPad">
+
+                                <div className="userInfo">
+
+                                    <div className="course-name">{data.course_name}</div>
+
+
+
+                                    {
+                                        (data.is_current === true) ?
+
+                                            <div className="Enrolled">
+                                                <p>enrolled</p>
+                                            </div>
+
+                                            :
+                                            
+                                            null
+                                    }
+
+
+
+
+                                </div>
+
+                                <div className="Enrolled-date"> Enrolled On: {data.enroll_date} </div>
+
+                            </div>
+                        </div>
+                    )
+                )
+            }
         </div>
     );
 }
