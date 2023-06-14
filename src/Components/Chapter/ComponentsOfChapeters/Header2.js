@@ -13,45 +13,50 @@ import { ChapterData_1 } from '../../Subject/Chapter Data/ChapterData';
 import Learn from '../Pages/Learn';
 import Practice from '../Pages/Practice';
 import Revise from '../Pages/Revise';
-import Test from '../Pages/Test';
+import Test from 'C:/Users/eSaral/Documents/verification_login/src/Components/Chapter/Pages/Test.js';
 
 
 export default function Header2() {
 
     // const data = useContext(ChapterData_1)
 
-    const [dataState, setDataState] = useState('learn');
+    // const [dataState, setDataState] = useState('learn');
 
-    
+    const navigate = useNavigate();
+
+
     // const navigate = useNavigate()
     const location = useLocation();
-    
+
     const data = location.state.defi
     console.log("Header 2 data", data)
 
     console.log("location", location.state)
 
-    useEffect(
-        () => {
-            setDataState(location.state.defi)
-        }, []
-    )
+    // useEffect(
+    //     () => {
+    //         setDataState(location.state.defi)
+    //     }, []
+    // )
 
+    function TabChange(a) {
+        
+        // const ButtonClicked = a
 
+        const data = JSON.parse(sessionStorage.getItem('chapter data'))
 
-    const dict = {
-        'learn': <Learn data={data} />,
-        'practice': <Practice data={data} />,
-        'revise': <Revise data={data} />,
-        'test': <Test data={data} />
-    }
+        data["ButtonClicked"] = a
 
-    // function SubjectDataLoader(a) {
-    //     console.log(`${a} clicked`)
+        console.log('testing data is work properly or not',data)
 
-    //     document.getElementById("Button-info").innerHTML = dict[a]
+        navigate('/Content', {
+            state: data
+        }
+        ) 
 
-    // }
+        console.log('moving from on tab to another tab and data is as', data )} 
+    
+    
 
 
 
@@ -64,23 +69,23 @@ export default function Header2() {
 
                 <div className='heading'>
 
-                    <a className='button_effect' onClick={() => setDataState('learn')}>
+                    <a className='button_effect' onClick={ () => TabChange('learn') }>
                         Learn
                     </a>
 
-                    <a className='button_effect' onClick={() => setDataState('practice')}>
+                    <a className='button_effect' onClick={() => TabChange('practise')}>
                         Practice
                     </a>
 
-                    <a className='button_effect' onClick={() => setDataState('revise')}>
+                    <a className='button_effect' onClick={() => TabChange('revise')}>
                         Revise
                     </a>
 
-                    <a className='button_effect' onClick={() => setDataState('test')}>
+                    <a className='button_effect' onClick={() => TabChange('test')}>
                         Test
                     </a>
 
-                    {
+                    {/* {
                         (dataState === 'learn') &&
 
                         <div id='Button-info'>  {dict['learn']} </div>
@@ -106,7 +111,7 @@ export default function Header2() {
 
                         <div id='Button-info'>  {dict['test']} </div>
 
-                    }
+                    } */}
 
 
 

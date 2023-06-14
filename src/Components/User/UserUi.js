@@ -21,11 +21,11 @@ const UserUi = (props) => {
     const enrollments = props.data.data.data.enrollments;
     // console.log('enrollments', props.data.data.data.enrollments)
 
-    const enrollment = enrollments.find(
-        function isenroll(element) {
-            return element.is_current === true
-        }
-    )
+    // const enrollment = enrollments.find(
+    //     function isenroll(element) {
+    //         return element.is_current === true
+    //     }
+    // )
 
     const faculties = props.data.data.data.faculties;
     console.log(faculties)
@@ -37,10 +37,13 @@ const UserUi = (props) => {
     console.log(subjects[0].node_id)
 
 
+    console.log("WE ARE NOW UNDER THE UserUi",props.data.data)
+
+
     return (
         <>
 
-            <Header profile={profile} enrollment={enrollment} />
+            <Header profile={profile} enrollments={enrollments} />
             
                 <FacultiUi faculties={faculties} />
 
