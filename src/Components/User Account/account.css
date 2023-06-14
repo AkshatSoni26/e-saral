@@ -46,11 +46,11 @@ font-size: large;
     color: black;
 }
 
-/* img {
+.image {
     border-radius: 100%;
     width: 70px;
     height: 70px;
-} */
+}
 
 .course-name {
     width: 100%;
@@ -59,3 +59,49 @@ font-size: large;
  .proPad {
     padding-left: 4%;
  }
+
+ .dropdownSec {
+    /* background-color: rgb(230, 230, 230); */
+    color: rgb(0, 0, 0);
+    padding-left: 2vw;
+ }
+
+ .dropHeader {
+    padding-left: 1vw;
+    
+ }
+
+ .dropCurr {
+    display : flex
+ }
+
+ .curr {
+    color: rgb(150, 148, 148);
+    padding-left: 3vw;
+ }
+ 
+
+ .dropHeader1 {
+  
+    align-items: center;
+    width: 100%;
+    border-radius: 0%;
+    display: flex;
+    text-decoration: none;
+  
+ }
+
+ .dropHeader1:hover {
+    background-color: rgb(168, 167, 167);
+    text-decoration: none;
+}
+
+ .dropHeader2 {
+    display: flex;
+    background-color: rgb(235, 235, 235);
+    border-radius: 0%;
+    padding-left: 3vw;
+    text-decoration: none;
+ }
+
+
