@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import axios from "axios";
 import {  MDBAlert } from 'mdb-react-ui-kit';
 import { Alert } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -9,10 +10,11 @@ const URL = "https://development.esaral.com/v2/users/update-profile"
 
 export default function EditForm() {
 
-  const triggerItem = useRef();
+  // const triggerItem = useRef();
 
-  const triggerItem1 = useRef(null);
+  // const triggerItem1 = useRef(null);
 
+  const navigate = useNavigate();
 
   const profile = JSON.parse(localStorage.getItem("info")).profile;
 
@@ -52,6 +54,7 @@ export default function EditForm() {
 
       ).then((response) => {
         console.log("successfully add the name");
+        navigate("/")
         // triggerItem.current.show();
         // return (
         //   <Alert key="success" variant="success" >
@@ -71,6 +74,8 @@ export default function EditForm() {
     // Do something with the form data, like making an API call or updating state
     console.log(formData);
   };
+
+
   return (
     <div style={containerStyle}>
       <form onSubmit={handleSubmit}>

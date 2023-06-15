@@ -1,7 +1,11 @@
 import React from "react";
 import "./account.css";
+import { useNavigate } from "react-router-dom";
 
 export default function UserInfo({ PROFILE_DATA, ICON_SIZE }) {
+
+  const navigate = useNavigate();
+
   return (
 
     
@@ -42,7 +46,7 @@ export default function UserInfo({ PROFILE_DATA, ICON_SIZE }) {
 
           <div className=" container EDIT-BUT">
             <div>
-              <a href="/edit">
+              <a onClick={ () => navigate("/edit")}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"

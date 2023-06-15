@@ -29,6 +29,7 @@ export default function Header() {
 
       setTimeout(
         () => {
+          
           setUdata(JSON.parse(localStorage.getItem('info')))
           
         }, 1
