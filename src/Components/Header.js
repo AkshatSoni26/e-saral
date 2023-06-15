@@ -7,6 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { authFunction } from "./Login I Logout/Logout";
 import { header_data } from "./User/UserUi";
 import "../Components/CSS/Header.css";
+import { MDBDropdown, MDBDropdownMenu, MDBDropdownToggle, MDBDropdownItem } from 'mdb-react-ui-kit';
+
 
 export default function Header(props) {
   console.log(props);
@@ -53,9 +55,76 @@ export default function Header(props) {
               <h3>
                 {uData.enrollments.map((data, i) => {
                   if (data.is_current == true) {
-                    return data.course_name;
+
+                    return (
+
+                     
+                      // <>
+                      // {data.course_name}
+                      // </>
+                      // :
+                      <>
+                        {console.log("length of subcourses", (data.subcourses).length)}
+                        <MDBDropdown >
+
+                          <MDBDropdownToggle tag='a' className="text-white">
+                            {data.course_name}
+                          </MDBDropdownToggle>
+
+                          <MDBDropdownMenu >
+                          
+                          { uData.enrollments.map((data2, i) => {
+                            return (
+                              <>
+
+                              
+
+                              {
+                              <div>
+                                {
+                                ( ((data.subcourses).length) == 1 ) 
+                                
+                                ?
+
+                                <a   className="btn dropHeader1">{ data2.course_name }
+                                {(data2.is_current == true) ? <p className="curr">(current)</p> : null}</a>
+
+                                :
+                              <>
+                              <div   className="dropHeader">{ data2.course_name }</div>
+
+                              {(data2.subcourses).map(
+                                (data1, j) => {
+                                  return ( 
+                                    <div className="dropCurr">
+                                  
+                                  <a className="btn dropHeader1 dropHeader2" tag='a' key={j} link>{data1.name} 
+                                  
+                                  {(data1.is_current == true) ? <p className="curr">(current)</p> : null} </a> 
+
+                                  </div>
+                                  )
+                                }
+                              )}
+                              </>
+                          }
+                              
+                            </div>
+                          }
+                            </>
+                          ) 
+                          } 
+                          )
+                        }         
+                          </MDBDropdownMenu>
+                        </MDBDropdown>
+                      </>
+                    
+                )
                   }
-                })}
+                }
+                )
+                }
               </h3>
 
               <b>Hi, {uData.profile.full_name} 👋 </b>

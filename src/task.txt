@@ -28,3 +28,29 @@ post request:-  'https://development.esaral.com/v1/users/'
                 device_name:Xiaomi
                 os:Redmi K20 Pro
                 os_version:30
+
+
+
+Task 4 :- changing the profile
+
+URL :- https://development.esaral.com/v2/users/update-profile
+
+{
+    "full_name" : NAME
+}
+
+request :- Post
+
+Task 5 :-  Changing the course enrollments
+
+https://development.esaral.com/v2/v2/users/home
+
+{"switch_target_subcourse_id":0,"switch_phase_id":0,}
+
+header: 
+
+
+  headers: { 
+    'Content-Type': 'application/json', 
+    'Authorization': 'Bearer '+auth_Token
+  },

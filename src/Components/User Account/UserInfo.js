@@ -31,7 +31,7 @@ export default function UserInfo({ PROFILE_DATA, ICON_SIZE }) {
       <div className="container userInfo">
         <div>
    
-        <img src="https://static.remove.bg/sample-gallery/graphics/bird-thumbnail.jpg"></img>
+        <img className="image" src="https://static.remove.bg/sample-gallery/graphics/bird-thumbnail.jpg"></img>
 
         </div>
 
