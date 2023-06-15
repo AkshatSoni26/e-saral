@@ -8,10 +8,6 @@ import { authFunction } from "./Login I Logout/Logout";
 import { header_data } from "./User/UserUi";
 import "../Components/CSS/Header.css";
 import { MDBDropdown, MDBDropdownMenu, MDBDropdownToggle, MDBDropdownItem } from 'mdb-react-ui-kit';
-<<<<<<< HEAD
-=======
-
->>>>>>> 588ac9489a92766e994efda013f0242fba59ac32
 
 import { setGlobalVariable } from "./service folder/Service";
 
@@ -77,15 +73,6 @@ export default function Header() {
                   if (data.is_current == true) {
 
                     return (
-<<<<<<< HEAD
-=======
-
-                     
-                      // <>
-                      // {data.course_name}
-                      // </>
-                      // :
->>>>>>> 588ac9489a92766e994efda013f0242fba59ac32
                       <>
                         {console.log("length of subcourses", (data.subcourses).length)}
                         <MDBDropdown >
@@ -95,7 +82,6 @@ export default function Header() {
                           </MDBDropdownToggle>
 
                           <MDBDropdownMenu >
-<<<<<<< HEAD
 
                             {uData.enrollments.map((data2, i) => {
                               return (
@@ -162,57 +148,6 @@ export default function Header() {
                       </>
 
                     )
-=======
-                          
-                          { uData.enrollments.map((data2, i) => {
-                            return (
-                              <>
-
-                              
-
-                              {
-                              <div>
-                                {
-                                ( ((data.subcourses).length) == 1 ) 
-                                
-                                ?
-
-                                <a   className="btn dropHeader1">{ data2.course_name }
-                                {(data2.is_current == true) ? <p className="curr">(current)</p> : null}</a>
-
-                                :
-                              <>
-                              <div   className="dropHeader">{ data2.course_name }</div>
-
-                              {(data2.subcourses).map(
-                                (data1, j) => {
-                                  return ( 
-                                    <div className="dropCurr">
-                                  
-                                  <a className="btn dropHeader1 dropHeader2" tag='a' key={j} link>{data1.name} 
-                                  
-                                  {(data1.is_current == true) ? <p className="curr">(current)</p> : null} </a> 
-
-                                  </div>
-                                  )
-                                }
-                              )}
-                              </>
-                          }
-                              
-                            </div>
-                          }
-                            </>
-                          ) 
-                          } 
-                          )
-                        }         
-                          </MDBDropdownMenu>
-                        </MDBDropdown>
-                      </>
-                    
-                )
->>>>>>> 588ac9489a92766e994efda013f0242fba59ac32
                   }
                 }
                 )

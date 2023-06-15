@@ -14,11 +14,7 @@ export default function EditForm() {
   const triggerItem1 = useRef(null);
 
 
-<<<<<<< HEAD
   const profile = JSON.parse(localStorage.getItem("info")).profile;
-=======
-  const profile = JSON.parse(sessionStorage.getItem("info")).profile;
->>>>>>> 588ac9489a92766e994efda013f0242fba59ac32
 
   const containerStyle = {
     padding: "0 350px 350px 350px",
