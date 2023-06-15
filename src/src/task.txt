@@ -1,0 +1,56 @@
+Task 1 :- first taking Nonce.
+
+post request:- 'https://development.esaral.com/v1/users/phone-verification';
+
+                country_code:91
+                phone_number:9414189610
+
+Task 2:- updating Nonce.
+put request:-   'https://development.esaral.com/v1/users/phone-verification';
+
+                country_code:91
+                phone_number:9414189610
+                otp:2625
+                nonce:2d9cbd114609cc2bbf89afdfe36fbf6a.1644502291
+
+
+Task 3:- set access token in local Storage.
+post request:-  'https://development.esaral.com/v1/users/'
+
+                country_code:91
+                phone_number:9414189610
+                nonce:3e6bb3f409f8b4d5827f946326b0f39a.1644559501
+                widevine:UD6FE3hQlNFslkFhNiHmxL02Jrf4BlVfO+KskxHBs5g=
+                widevine_level:L1
+                imei:UD6FE3hQlNFslkFhNiHmxL02Jrf4BlVfO+KskxHBs5g=
+                id_organization:1
+                firebase_notification_token:f5aoEZM9Tu6gdd7lEMy58p:APA91bHSt0cBMyb875QZ2SpNl9rnMZOo3rRjWWEIq-J0dtr7khAuNV3BG6ea4wUsVGPO4kuNgwWVhGF2gz99Fm2dk5kgmgcbKKW4XPah6UHHRkaKlxEvgI49rvTmkMxj7uzeKOsXAcri
+                device_name:Xiaomi
+                os:Redmi K20 Pro
+                os_version:30
+
+
+
+Task 4 :- changing the profile
+
+URL :- https://development.esaral.com/v2/users/update-profile
+
+{
+    "full_name" : NAME
+}
+
+request :- Post
+
+Task 5 :-  Changing the course enrollments
+
+https://development.esaral.com/v2/v2/users/home
+
+{"switch_target_subcourse_id":0,"switch_phase_id":0,}
+
+header: 
+
+
+  headers: { 
+    'Content-Type': 'application/json', 
+    'Authorization': 'Bearer '+auth_Token
+  },
