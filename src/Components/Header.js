@@ -78,13 +78,13 @@ export default function Header() {
                         {console.log("length of subcourses", (data.subcourses).length)}
                         <MDBDropdown >
 
-                          <MDBDropdownToggle tag='a' className="text-white">
+                          <MDBDropdownToggle tag='a' key={i} className="text-white">
                             {data.course_name}
                           </MDBDropdownToggle>
 
                           <MDBDropdownMenu >
 
-                            {uData.enrollments.map((data2, i) => {
+                            {uData.enrollments.map((data2, j) => {
                               return (
                                 <>
 
@@ -97,7 +97,7 @@ export default function Header() {
                                           <>
                                             {console.log("{ phase_id: data.phase_id, subcourses_id: data.subcourses[0].id }", { phase_id: data2.phase_id, subcourses_id: data2.subcourses[0].id })}
 
-                                            <a className="btn dropHeader1" 
+                                            <a className="btn dropHeader1" key={j}
 
                                               // onClick={() => console.log("phase_id, subcourses" ,data2.phase_id, data2.subcourses[0].id)}
 
@@ -112,11 +112,11 @@ export default function Header() {
                                             <div className="dropHeader">{data2.course_name}</div>
 
                                             {(data2.subcourses).map(
-                                              (data1, j) => {
+                                              (data1, k) => {
                                                 return (
                                                   <div className="dropCurr">
 
-                                                    <a className="btn dropHeader1 dropHeader2" tag='a' key={j}
+                                                    <a className="btn dropHeader1 dropHeader2" tag='a' key={k}
 
 
                                                       onClick={() => { testing( data2.phase_id, data1.id );
@@ -181,11 +181,11 @@ export default function Header() {
               >
                 <g
                   fill="none"
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   stroke="#FFFFFF"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
                   transform="translate(4 2.5)"
                 >
                   <circle cx="7.579" cy="4.778" r="4.778"></circle>

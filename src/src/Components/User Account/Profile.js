@@ -88,9 +88,9 @@ export default function Profile() {
               viewBox="0 0 24 24"
               fill="white"
               stroke="black"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               class="feather feather-book-open"
             >
               <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>

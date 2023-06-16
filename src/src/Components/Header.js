@@ -180,11 +180,11 @@ export default function Header() {
               >
                 <g
                   fill="none"
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   stroke="#FFFFFF"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
                   transform="translate(4 2.5)"
                 >
                   <circle cx="7.579" cy="4.778" r="4.778"></circle>

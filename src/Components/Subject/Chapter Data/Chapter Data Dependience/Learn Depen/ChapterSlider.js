@@ -50,11 +50,25 @@ const ChapterSlider = () => {
             (chapter, index) => {
             return (
               <div className="ChapterSlider zoom-effect"  key={index}>
-                <img src={chapter.content_data.content_info.thumbnail} alt="movie" />
+
+                {
+                  // Thumbnail error handling
+
+                  (chapter && chapter.content_data && chapter.content_data.content_info && chapter.content_data.content_info.thumbnail) 
+                  
+                  ? 
+
+                  <img src={chapter && chapter.content_data && chapter.content_data.content_info && chapter.content_data.content_info.thumbnail} alt="thumbnail" />
+
+                  :
+                  <img src="https://www.contentviewspro.com/wp-content/uploads/2017/07/default_image.png" alt="thumbnail" />
+                }
+
                 {/* <div className="card-body">
                   <p className="card-text">{facultie.name}</p>
                   <p className="card-text">{facultie.designation}</p>
                 </div> */}
+              
               </div>
             );
           })}
