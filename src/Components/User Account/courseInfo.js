@@ -29,7 +29,7 @@ export default function CourseInfo({ ENROLLMENT_DATA, ICON_SIZE }) {
       </div>
 
       {ENROLLMENT_DATA.map((data, index) => (
-        <div className="container userInfo">
+        <div key={index} className="container userInfo">
           <div>
             <img
               className="image"

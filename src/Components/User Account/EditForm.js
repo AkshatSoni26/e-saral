@@ -1,19 +1,10 @@
 import React, { useRef, useState } from "react";
 import axios from "axios";
-import {  MDBAlert } from 'mdb-react-ui-kit';
-import { Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
-
-
-const URL = "https://development.esaral.com/v2/users/update-profile"
+const URL = "https://development.esaral.com/v2/users/update-profile";
 
 export default function EditForm() {
-
-  // const triggerItem = useRef();
-
-  // const triggerItem1 = useRef(null);
-
   const navigate = useNavigate();
 
   const profile = JSON.parse(localStorage.getItem("info")).profile;
@@ -28,47 +19,33 @@ export default function EditForm() {
     number: profile.phone_number,
   });
 
-
-  //   const EditFormDataRequest = axios.post(URL,{
-  //     "full_name" : profile.full_name,
-  // })
-
-  //   const { name, number } = formData;
-
   const handleSubmit = (e) => {
-
     let a = window.confirm(`A name was submitted: ${formData.name}`);
 
-    console.log(a)
+    console.log(a);
 
     const Headers = {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + localStorage.getItem("Access Key")
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + localStorage.getItem("Access Key"),
     };
 
     if (a == true) {
-      axios.post(URL, {
-        "full_name": formData.name,
-      },
-        { headers: Headers }
-
-      ).then((response) => {
-        console.log("successfully add the name");
-        navigate("/")
-        // triggerItem.current.show();
-        // return (
-        //   <Alert key="success" variant="success" >
-        //   This is a success alert—check it out!
-        // </Alert>
-        // )
-      })
+      axios
+        .post(
+          URL,
+          {
+            full_name: formData.name,
+          },
+          { headers: Headers }
+        )
+        .then((response) => {
+          console.log("successfully add the name");
+          navigate("/");
+        })
         .catch((error) => {
           console.log("some error occurred");
-          // triggerItem1.current.show();
-        }
-        )
-    }
-    else {
+        });
+    } else {
       const error = validateName();
       if (error) {
         const editName = document.getElementById("edit-name");
@@ -103,7 +80,6 @@ export default function EditForm() {
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             value={formData.name}
-            
             onChange={(event) =>
               setFormData({ ...formData, name: event.target.value })
             }
@@ -117,8 +93,8 @@ export default function EditForm() {
         </div>
 
         <p id="edit-name" style={{ color: "red" }}>
-        {validateName()}
-      </p>
+          {validateName()}
+        </p>
 
         <br />
 
@@ -140,51 +116,20 @@ export default function EditForm() {
         <div
           style={{
             paddingLeft: "40%",
-          }}>
-
-          <button 
-          disabled = { formData.name == profile.full_name || /[!@#$%^&*(),.?":{}|<>]/.test(formData.name) } 
-          type="submit" class="btn btn-primary">
+          }}
+        >
+          <button
+            disabled={
+              formData.name == profile.full_name ||
+              /[!@#$%^&*(),.?":{}|<>]/.test(formData.name)
+            }
+            type="submit"
+            class="btn btn-primary"
+          >
             Submit
           </button>
         </div>
       </form>
-
-      {/* <MDBAlert
-        color='success'
-        autohide
-        width={800}
-        position='top-right'
-        offset={50}
-        delay={2000}
-        appendToBody
-        triggerRef={triggerItem}
-      >
-        A simple success alert with
-        <a href='#' className='alert-link'>
-          an example link
-        </a>
-        . Give it a click if you like.
-      </MDBAlert>
-
-      <MDBAlert
-        color='danger'
-        autohide
-        width={800}
-        position='top-right'
-        offset={50}
-        delay={2000}
-        appendToBody
-        triggerRef={triggerItem1}
-      >
-        A simple danger alert with
-        <a href='#' className='alert-link'>
-          an example link
-        </a>
-        . Give it a click if you like.
-      </MDBAlert> */}
-
-
     </div>
   );
 }

@@ -7,7 +7,8 @@ import TestPage from "./TestPage";
 import Header2 from "../ComponentsOfChapeters/Header2";
 
 import "../../CSS/carsoul.css";
-import Spinner from "react-bootstrap/Spinner";
+import SpinnerForLoad from "../../Spinner";
+
 
 export default function Test() {
   console.log("Under the Test Page");
@@ -63,11 +64,7 @@ export default function Test() {
   }, [location]);
 
   return !data ? (
-    <div style={{ marginTop: "50vh", marginLeft: "50vw" }}>
-      <Spinner animation="border" role="status">
-        <span className="visually-hidden">Loading...</span>
-      </Spinner>
-    </div>
+    <SpinnerForLoad />
   ) : (
     <div>
       <div>

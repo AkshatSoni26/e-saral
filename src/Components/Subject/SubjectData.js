@@ -6,14 +6,10 @@ import { useLocation, useNavigate } from "react-router-dom";
 import ChapterData from "../Subject/Chapter Data/ChapterData";
 import SideBar from "./Side Bar/SideBar.js";
 import "../CSS/carsoul.css";
-
-import { authFunction } from "../Login I Logout/Logout";
-import Nav from "react-bootstrap/Nav";
-import Navbar from "react-bootstrap/Navbar";
-import Container from "react-bootstrap/Container";
 import SubjectHeader from "./SubjectHeader";
+import SpinnerForLoad from "../Spinner";
 
-import Spinner from "react-bootstrap/Spinner";
+
 
 const context_data_1 = createContext();
 const context_data_2 = createContext();
@@ -65,11 +61,7 @@ function SubjectData() {
   });
 
   return !chapters ? (
-    <div style={{ marginTop: "50vh", marginLeft: "50vw" }}>
-      <Spinner animation="border" role="status">
-        <span className="visually-hidden">Loading...</span>
-      </Spinner>
-    </div>
+ <SpinnerForLoad />
   ) : (
     <>
       <SubjectHeader />

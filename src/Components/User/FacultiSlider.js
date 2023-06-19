@@ -32,7 +32,7 @@ const FacultiChapterSlider = ({ faculties }) => {
         responsive={responsive}
         // autoPlay={true}
         swipeable={true}
-        draggable={true}
+        // draggable={true}
         // showDots={true}
         infinite={true}
         partialVisible={false}

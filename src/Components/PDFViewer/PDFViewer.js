@@ -85,29 +85,32 @@ function PDFViewer() {
     </div>
   ) : (
     <div>
-      <Document file={pdfURL}>
-        <Page pageNumber={pageNumber} />
-      </Document>
-      <p className="text-center">
-        Page {pageNumber} / {numPages}
-      </p>
+      <div className="overlay"></div>
+      <div className="content">
+        <Document file={pdfURL}>
+          <Page pageNumber={pageNumber} />
+        </Document>
+        <p className="text-center">
+          Page {pageNumber} / {numPages}
+        </p>
 
-      <div className="d-flex justify-content-center">
-        <button
-          className=" btn btn-primary"
-          disabled={pageNumber <= 1}
-          onClick={() => handlePageChange(pageNumber - 1)}
-        >
-          &larr; Previous Page
-        </button>
-        &ensp;
-        <button
-          className=" btn btn-primary"
-          disabled={pageNumber >= numPages}
-          onClick={() => handlePageChange(pageNumber + 1)}
-        >
-          Next Page &rarr;
-        </button>
+        <div className="d-flex justify-content-center">
+          <button
+            className=" btn btn-primary"
+            disabled={pageNumber <= 1}
+            onClick={() => handlePageChange(pageNumber - 1)}
+          >
+            &larr; Previous Page
+          </button>
+          &ensp;
+          <button
+            className=" btn btn-primary"
+            disabled={pageNumber >= numPages}
+            onClick={() => handlePageChange(pageNumber + 1)}
+          >
+            Next Page &rarr;
+          </button>
+        </div>
       </div>
     </div>
   );

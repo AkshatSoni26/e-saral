@@ -27,7 +27,7 @@ export default function ChapterData(props) {
   // console.log('practics-button',response.response.content.practise )
 
   return (
-    <>
+    <div   >
       <section id={`chapter-${response.id}`}>
         <ChapterData_1.Provider value={response.response}>
           <LearnPortionHeader />
@@ -37,7 +37,7 @@ export default function ChapterData(props) {
           <RevisePractiseButton />
         </ChapterData_1.Provider>
       </section>
-    </>
+    </div>
   );
 }
 

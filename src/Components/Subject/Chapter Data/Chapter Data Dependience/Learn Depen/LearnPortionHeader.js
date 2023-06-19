@@ -36,7 +36,6 @@ export default function LearnPortionHeader() {
           <h6 style={{ paddingLeft: "800px" }}>
             Total Lectures:{total_lectures}
             <p>
-              {" "}
               <i class="arrow right"></i>
             </p>
           </h6>

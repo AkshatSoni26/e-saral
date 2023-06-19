@@ -2,20 +2,18 @@ import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link, useNavigate } from "react-router-dom";
 import { authFunction } from "./Login I Logout/Logout";
-import { header_data } from "./User/UserUi";
 import "../Components/CSS/Header.css";
 import {
   MDBDropdown,
   MDBDropdownMenu,
   MDBDropdownToggle,
-  MDBDropdownItem,
 } from "mdb-react-ui-kit";
 
 import { setGlobalVariable } from "./service folder/Service";
-import Spinner from "react-bootstrap/Spinner";
+import SpinnerForLoad from "./Spinner";
+
 
 export default function Header() {
   console.log();
@@ -44,13 +42,9 @@ export default function Header() {
     window.location.reload();
   }
 
-  return !uData ? (
-    <div style={{ marginTop: "50vh", marginLeft: "50vw" }}>
-      <Spinner animation="border" role="status">
-        <span className="visually-hidden">Loading...</span>
-      </Spinner>
-    </div>
-  ) : (
+  return !uData ? 
+  <SpinnerForLoad /> 
+  : (
     <div>
       <div className="sticky">
         <Navbar className="text-light" bg="dark" expand="lg">

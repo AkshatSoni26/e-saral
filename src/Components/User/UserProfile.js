@@ -6,8 +6,9 @@ import UserUi from "./UserUi";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { getGlobalVariable } from "../service folder/Service";
+import SpinnerForLoad from "../Spinner";
 
-import Spinner from "react-bootstrap/Spinner";
+
 
 const UserProfile = () => {
   const navigate = useNavigate();
@@ -64,11 +65,7 @@ const UserProfile = () => {
   }, []);
 
   return !data.data ? (
-    <div style={{ marginTop: "50vh", marginLeft: "50vw" }}>
-      <Spinner animation="border" role="status">
-        <span className="visually-hidden">Loading...</span>
-      </Spinner>
-    </div>
+    <SpinnerForLoad />
   ) : (
     <>
       {console.log("before UserUI", data)}

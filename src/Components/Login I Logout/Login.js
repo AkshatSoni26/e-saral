@@ -1,7 +1,9 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
-import Spinner from "react-bootstrap/Spinner";
+import SpinnerForLoad from "../Spinner";
+
+
 
 function Login() {
   const navigate = useNavigate();
@@ -66,11 +68,7 @@ function Login() {
   });
 
   return (
-    <div style={{ marginTop: "50vh", marginLeft: "50vw" }}>
-      <Spinner animation="border" role="status">
-        <span className="visually-hidden">Loading...</span>
-      </Spinner>
-    </div>
+    <SpinnerForLoad />
   );
 }
 

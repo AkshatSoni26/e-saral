@@ -52,7 +52,7 @@ const ChapterSlider = () => {
                 chapter.content_data &&
                 chapter.content_data.content_info &&
                 chapter.content_data.content_info.thumbnail ? (
-                  <img
+                  <img className="hovering-effect"
                     src={
                       chapter &&
                       chapter.content_data &&
@@ -62,7 +62,7 @@ const ChapterSlider = () => {
                     alt="thumbnail"
                   />
                 ) : (
-                  <img
+                  <img className="hovering-effect"
                     src="https://www.contentviewspro.com/wp-content/uploads/2017/07/default_image.png"
                     alt="thumbnail"
                   />

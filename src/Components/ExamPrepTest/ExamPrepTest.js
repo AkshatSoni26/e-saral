@@ -2,7 +2,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import Spinner from "react-bootstrap/Spinner";
+import SpinnerForLoad from "../Spinner";
+
+
 
 export default function ExamPrepTest() {
   const location = useLocation();
@@ -56,10 +58,6 @@ export default function ExamPrepTest() {
       },
     })
   ) : (
-    <div style={{ marginTop: "50vh", marginLeft: "50vw" }}>
-      <Spinner animation="border" role="status">
-        <span className="visually-hidden">Loading...</span>
-      </Spinner>
-    </div>
+    <SpinnerForLoad />
   );
 }
