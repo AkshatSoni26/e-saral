@@ -1,8 +1,9 @@
 import React from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import 'C:/Users/eSaral/Documents/verification_login/src/Components/CSS/carsoul.css'
+import '../CSS/carsoul.css'
 import '../CSS/App.css'
+
 
 const responsive = {
   desktop: {
@@ -41,7 +42,7 @@ const FacultiChapterSlider = ({ faculties }) => {
           (facultie, index) => {
             return (
               <div className="ChapterSlider" id='zoom-effect' key={index}>
-                <img src={facultie.thumbnail} alt="movie" />
+                <img src={facultie.thumbnail} className="b-block border rounded-3 shadow-sm" alt="movie" />
                 <div className="card-body">
                   <p className="card-text">{facultie.name}</p>
                   <p className="card-text">{facultie.designation}</p>

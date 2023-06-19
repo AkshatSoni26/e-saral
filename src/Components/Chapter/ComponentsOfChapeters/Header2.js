@@ -2,18 +2,18 @@ import React, { useContext, useEffect, useState } from 'react'
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
-import { authFunction } from 'C:/Users/eSaral/Documents/verification_login/src/Components/Login I Logout/Logout.js';
+import { authFunction } from '../../Login I Logout/Logout'; 
 import { useLocation, useNavigate } from 'react-router-dom';
-import 'C:/Users/eSaral/Documents/verification_login/src/Components/CSS/Header.css'
+import '../../CSS/Header.css'
 
 import SubjectHeader from '../../Subject/SubjectHeader';
 
-import { ChapterData_1 } from '../../Subject/Chapter Data/ChapterData';
+import { ChapterData_1 } from '../../Subject/Chapter Data/ChapterData'; 
 
 import Learn from '../Pages/Learn';
 import Practice from '../Pages/Practice';
 import Revise from '../Pages/Revise';
-import Test from 'C:/Users/eSaral/Documents/verification_login/src/Components/Chapter/Pages/Test.js';
+import Test from '../Pages/Test';
 
 
 export default function Header2() {
@@ -43,7 +43,7 @@ export default function Header2() {
         
         // const ButtonClicked = a
 
-        const data = JSON.parse(sessionStorage.getItem('chapter data'))
+        const data = JSON.parse(localStorage.getItem('chapter data'))
 
         data["ButtonClicked"] = a
 
@@ -84,35 +84,6 @@ export default function Header2() {
                     <a className='button_effect' onClick={() => TabChange('test')}>
                         Test
                     </a>
-
-                    {/* {
-                        (dataState === 'learn') &&
-
-                        <div id='Button-info'>  {dict['learn']} </div>
-
-                    }
-
-                    {
-                        (dataState === 'practice') &&
-
-                        <div id='Button-info'>  {dict['practice']}</div>
-
-                    }
-
-                    {
-                        (dataState === 'revise') &&
-
-                        <div id='Button-info'> {dict['revise']}</div>
-
-                    }
-
-                    {
-                        (dataState === 'test') &&
-
-                        <div id='Button-info'>  {dict['test']} </div>
-
-                    } */}
-
 
 
                 </div>

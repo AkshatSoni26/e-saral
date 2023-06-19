@@ -3,37 +3,64 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { authFunction } from "./Login I Logout/Logout";
 import { header_data } from "./User/UserUi";
 import "../Components/CSS/Header.css";
+import { MDBDropdown, MDBDropdownMenu, MDBDropdownToggle, MDBDropdownItem } from 'mdb-react-ui-kit';
 
-export default function Header(props) {
-  console.log(props);
+import { setGlobalVariable } from "./service folder/Service";
+import Spinner from 'react-bootstrap/Spinner';
+
+export default function Header() {
+  console.log();
 
   const navigate = useNavigate();
 
   const [uData, setUdata] = useState();
 
-  console.log("data of Header", props);
+  // const uData =JSON.parse(localStorage.getItem('info'))
 
-  useEffect(() => {
-    if (!sessionStorage.getItem("info")) {
-      sessionStorage.setItem("info", JSON.stringify(props));
-      setUdata(props);
-      console.log("successfully update the data under the if block", props);
-    } else {
-      const UdataFromSessionS = JSON.parse(sessionStorage.getItem("info"));
-      setUdata(UdataFromSessionS);
-      console.log(
-        "successfully update the data under the else block",
-        UdataFromSessionS
-      );
+  console.log("uData", uData)
+
+  useEffect(
+
+    () => {
+
+      setTimeout(
+        () => {
+          
+          setUdata(JSON.parse(localStorage.getItem('info')))
+          
+        }, 1
+      )
     }
-  }, []);
+    , []
+  )
+
+
+  function testing(phase_id, subcourse_id) {
+
+    setGlobalVariable({
+      "subcourse_id": subcourse_id,
+      "phase_id": phase_id,
+    });
+ 
+    navigate('/')
+    window.location.reload();
+
+  }
+
 
   return !uData ? (
-    <div>Loading . . . </div>
+
+    <div style={{marginTop:"50vh",
+        marginLeft: "50vw"}}>
+    <Spinner animation="border" role="status">
+      <span className="visually-hidden">Loading...</span>
+    </Spinner>
+    </div>
+
   ) : (
     <div>
       <div className="sticky">
@@ -53,9 +80,87 @@ export default function Header(props) {
               <h3>
                 {uData.enrollments.map((data, i) => {
                   if (data.is_current == true) {
-                    return data.course_name;
+
+                    return (
+                      <>
+                        {console.log("length of subcourses", (data.subcourses).length)}
+                        <MDBDropdown >
+
+                          <MDBDropdownToggle tag='a' key={i} className="text-white">
+                            {data.course_name}
+                          </MDBDropdownToggle>
+
+                          <MDBDropdownMenu >
+
+                            {uData.enrollments.map((data2, j) => {
+                              return (
+                                <>
+
+                                  {
+                                    <div>
+                                      {
+                                        (((data.subcourses).length) == 1)
+
+                                          ?
+                                          <>
+                                            {console.log("{ phase_id: data.phase_id, subcourses_id: data.subcourses[0].id }", { phase_id: data2.phase_id, subcourses_id: data2.subcourses[0].id })}
+
+                                            <a className="btn dropHeader1" key={j}
+
+                                              // onClick={() => console.log("phase_id, subcourses" ,data2.phase_id, data2.subcourses[0].id)}
+
+                                              onClick={() => testing(data2.phase_id, data2.subcourses[0].id)}
+
+
+                                            > {data2.course_name}
+                                              {(data2.is_current == true) ? <p className="curr">(current)</p> : null}</a>
+                                          </>
+                                          :
+                                          <>
+                                            <div className="dropHeader">{data2.course_name}</div>
+
+                                            {(data2.subcourses).map(
+                                              (data1, k) => {
+                                                return (
+                                                  <div className="dropCurr">
+
+                                                    <a className="btn dropHeader1 dropHeader2" tag='a' key={k}
+
+
+                                                      onClick={() => { testing( data2.phase_id, data1.id );
+                                                     } }
+                                                    >{data1.name}
+
+
+
+                                                      {console.log("{ phase_id: data.phase_id, subcourses_id: data.subcourses.id }", { phase_id: data2.phase_id, subcourses_id: data1.id })}
+
+
+                                                      {(data1.is_current == true) ? <p className="curr">(current)</p> : null} </a>
+
+                                                  </div>
+                                                )
+                                              }
+                                            )}
+                                          </>
+                                      }
+
+                                    </div>
+                                  }
+                                </>
+                              )
+                            }
+                            )
+                            }
+                          </MDBDropdownMenu>
+                        </MDBDropdown>
+                      </>
+
+                    )
                   }
-                })}
+                }
+                )
+                }
               </h3>
 
               <b>Hi, {uData.profile.full_name} 👋 </b>
@@ -84,11 +189,11 @@ export default function Header(props) {
               >
                 <g
                   fill="none"
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   stroke="#FFFFFF"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
                   transform="translate(4 2.5)"
                 >
                   <circle cx="7.579" cy="4.778" r="4.778"></circle>

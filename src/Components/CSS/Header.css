@@ -10,7 +10,7 @@
 
 div.header1 {
     position: fixed;
-    padding-top: 70px;
+    padding-top: 80px;
     width: 100%;
     z-index: 1000;
     color: aliceblue;
@@ -45,3 +45,7 @@ a {
     /* overflow-y: scroll; */
 
 }
+
+/* .bg-dark {
+    color: #ffffff;
+} */

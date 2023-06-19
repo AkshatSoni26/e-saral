@@ -3,29 +3,32 @@ import { useLocation } from 'react-router-dom'
 import Learn from './Learn';
 import Practice from './Practice';
 import Revise from './Revise';
-import TestPage from 'C:/Users/eSaral/Documents/verification_login/src/Components/Chapter/Pages/TestPage.js'
+import TestPage from './TestPage'
 import Header2 from '../ComponentsOfChapeters/Header2';
 import ScrollBAr from '../ComponentsOfChapeters/ScrollBAr';
 // import TestPage from './ContentPage';
 
-import 'C:/Users/eSaral/Documents/verification_login/src/Components/CSS/carsoul.css'
+import '../../CSS/carsoul.css'
+import Spinner from 'react-bootstrap/Spinner';
 
 
 export default function Test() {
 
-  const location = useLocation();
+ 
 
   console.log("Under the Test Page")
 
   const [data, setData] = useState();
 
+  const location = useLocation();
+
 
   useEffect(
     () => {
 
-      const NotHaveStore = (!sessionStorage.getItem('chapter data'))
-      const NullCond = (sessionStorage.getItem('chapter data') == null)
-      const UndifCond = ((sessionStorage.getItem('chapter data') == undefined))
+      const NotHaveStore = (!localStorage.getItem('chapter data'))
+      const NullCond = (localStorage.getItem('chapter data') == null)
+      const UndifCond = ((localStorage.getItem('chapter data') == undefined))
 
       const IfStatCondition = (NotHaveStore || NullCond || UndifCond)
 
@@ -37,31 +40,31 @@ export default function Test() {
         // setButtonInfo(data.ButtonClicked)
 
 
-        sessionStorage.setItem('chapter data', JSON.stringify(location.state))
+        localStorage.setItem('chapter data', JSON.stringify(location.state))
         console.log(location.state)
       }
 
       //Updating Data
-      else if ((((JSON.parse(sessionStorage.getItem("chapter data"))).chapter_name) != location.state.chapter_name) ||
-        (((JSON.parse(sessionStorage.getItem("chapter data"))).ButtonClicked) != location.state.ButtonClicked)) {
-        sessionStorage.removeItem("chapter data")
+      else if ((((JSON.parse(localStorage.getItem("chapter data"))).chapter_name) != location.state.chapter_name) ||
+        (((JSON.parse(localStorage.getItem("chapter data"))).ButtonClicked) != location.state.ButtonClicked)) {
+        localStorage.removeItem("chapter data")
         console.log('item is remove and now updatng data ')
         console.log(" else if porion is run", location.state)
 
         setData(location.state)
         // setButtonInfo(data.ButtonClicked)
 
-        sessionStorage.setItem('chapter data', JSON.stringify(location.state));
+        localStorage.setItem('chapter data', JSON.stringify(location.state));
       }
 
       // Taking Data
       else {
-        const DataFromSessionStorage = sessionStorage.getItem('chapter data')
+        const DataFromlocalStorage = localStorage.getItem('chapter data')
 
-        setData(JSON.parse(DataFromSessionStorage))
+        setData(JSON.parse(DataFromlocalStorage))
         // setButtonInfo(data.ButtonClicked)
 
-        console.log("Taking data from the session storage", JSON.parse(DataFromSessionStorage))
+        console.log("Taking data from the session storage", JSON.parse(DataFromlocalStorage))
 
       }
     }, [location]
@@ -72,8 +75,12 @@ export default function Test() {
   return (
 
     (!data) ?
-
-      (<div>Loading...</div>)
+    <div style={{marginTop:"50vh",
+    marginLeft: "50vw"}}>
+    <Spinner animation="border" role="status">
+    <span className="visually-hidden">Loading...</span>
+  </Spinner>
+  </div>
       :
 
       <div>

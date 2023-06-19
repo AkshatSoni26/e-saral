@@ -5,26 +5,29 @@ import axios from 'axios';
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
 import ChapterData from '../Subject/Chapter Data/ChapterData'
-import SideBar from 'C:/Users/eSaral/Documents/verification_login/src/Components/Subject/Side Bar/SideBar.js'
-import 'C:/Users/eSaral/Documents/verification_login/src/Components/CSS/carsoul.css'
+import SideBar from './Side Bar/SideBar.js'
+import '../CSS/carsoul.css'
 
-import { authFunction } from 'C:/Users/eSaral/Documents/verification_login/src/Components/Login I Logout/Logout.js';
+
+
+import { authFunction } from '../Login I Logout/Logout';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import SubjectHeader from './SubjectHeader';
 
+import Spinner from 'react-bootstrap/Spinner';
 
 
 
 
-const URL = 'https://development.esaral.com/v2/contents/get-node-content-tree';
 
 
 const context_data_1 = createContext();
 const context_data_2 = createContext();
 
 function SubjectData() {
+
 
     const [chapters, setChapter] = useState();
 
@@ -35,13 +38,17 @@ function SubjectData() {
 
     const [NodeIdStored, setNodeIdStored] = useState('');
 
-    const Headers = {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + localStorage.getItem("Access Key")
-    };
+    
 
     useEffect(
         () => {
+
+            const URL = 'https://development.esaral.com/v2/contents/get-node-content-tree';
+
+            const Headers = {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem("Access Key")
+            };
 
             axios.post(URL,
                 {
@@ -81,7 +88,12 @@ function SubjectData() {
 
         (!chapters)
             ?
-            <div className='text-center' id="user_id" > Loading...</div >
+            <div style={{marginTop:"50vh",
+        marginLeft: "50vw"}}>
+            <Spinner animation="border" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+          </div>
             :
             <>
 

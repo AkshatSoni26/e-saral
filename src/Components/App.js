@@ -6,14 +6,30 @@ import UserProfile from './User/UserProfile';
 
 import SubjectData from './Subject/SubjectData';
 
-import Test from 'C:/Users/eSaral/Documents/verification_login/src/Components/Chapter/Pages/Test.js'
+// import Test from '\/Test.js'
 
 import Profile from './User Account/Profile';
 import Edit from './User Account/Edit';
+import Test from './Chapter/Pages/Test';
+import { useEffect } from 'react';
+import ExamPrepTest from './ExamPrepTest/ExamPrepTest';
+import PDFViewer from './PDFViewer/PDFViewer';
+
 
 function App() {
 
-  console.log("object")
+  // console.log("object")
+
+const navigate = useNavigate();
+
+  useEffect(
+        () => {
+            if(localStorage.getItem("Access Key")){
+                navigate("/", { state: localStorage.getItem("Access Key") })
+            }
+        }, []
+    )
+
 
   return (
 
@@ -30,6 +46,12 @@ function App() {
       <Route path="/profile" element ={<Profile />} />
 
       <Route path="/edit" element= {<Edit />} />
+
+      <Route  path="/ExamPrepTest" element= {<ExamPrepTest />} />
+
+      <Route path="/pdf" element= {<PDFViewer />} />
+
+
 
     </Routes>
 

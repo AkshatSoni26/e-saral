@@ -1,7 +1,11 @@
 import React from "react";
 import "./account.css";
+import { useNavigate } from "react-router-dom";
 
 export default function UserInfo({ PROFILE_DATA, ICON_SIZE }) {
+
+  const navigate = useNavigate();
+
   return (
 
     
@@ -15,9 +19,9 @@ export default function UserInfo({ PROFILE_DATA, ICON_SIZE }) {
             viewBox="0 0 24 24"
             fill="none"
             stroke="black"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             class="feather feather-user"
           >
             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
@@ -31,7 +35,7 @@ export default function UserInfo({ PROFILE_DATA, ICON_SIZE }) {
       <div className="container userInfo">
         <div>
    
-        <img src="https://static.remove.bg/sample-gallery/graphics/bird-thumbnail.jpg"></img>
+        <img className="image" src="https://static.remove.bg/sample-gallery/graphics/bird-thumbnail.jpg"></img>
 
         </div>
 
@@ -42,7 +46,7 @@ export default function UserInfo({ PROFILE_DATA, ICON_SIZE }) {
 
           <div className=" container EDIT-BUT">
             <div>
-              <a href="/edit">
+              <a onClick={ () => navigate("/edit")}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"

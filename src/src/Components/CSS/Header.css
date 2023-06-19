@@ -1,0 +1,52 @@
+
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10000;
+    color: aliceblue;  
+}
+
+div.header1 {
+    position: fixed;
+    padding-top: 80px;
+    width: 100%;
+    z-index: 1000;
+    color: aliceblue;
+    background-color: #212529!important ;
+}
+
+.heading {
+    text-align: center;
+    font-size: large;
+}
+
+.button_effect
+{
+    align-items: center;
+    color: #ffffff;
+    display: inline-flex;
+    height: 100%;
+    padding: 0 15px;
+    white-space: nowrap;
+    text-underline-offset: none;
+}
+
+a {
+    /* color: #523ee8; */
+    cursor: pointer;
+    text-decoration: none;
+}
+
+#Button-info {
+    position:absolute;
+    padding-top: 10px;
+    color: black;
+    /* overflow-y: scroll; */
+
+}
+
+/* .bg-dark {
+    color: #ffffff;
+} */

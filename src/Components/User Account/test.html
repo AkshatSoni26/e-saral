@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Change HTML Tag with JavaScript</title>
+</head>
+<body>
+  <h1 id="myHeading">Hello, World!</h1>
+
+  <script>
+    var originalElement = document.getElementById('myHeading');
+    
+    var newElement = document.createElement('h2');
+    newElement.innerHTML = originalElement.innerHTML;
+    
+    originalElement.parentNode.replaceChild(newElement, originalElement);
+  </script>
+</body>
+</html>

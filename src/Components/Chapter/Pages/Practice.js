@@ -1,15 +1,27 @@
 import React, { useContext } from 'react'
+import PDFViewer from '../../PDFViewer/PDFViewer'
+import { useNavigate } from 'react-router-dom'
+
+
+// import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
+
 
 
 export default function Practice() {
 
-  const dataFromSession = sessionStorage.getItem("chapter data") // Taking data from storage
+  const dataFromSession = localStorage.getItem("chapter data") // Taking data from storage
 
   const dataConver = JSON.parse(dataFromSession) // Converting data from json to Object
 
   console.log("we are under the Learn components", dataConver.chapterData.content.practise)
 
   const practise_data = dataConver.chapterData.content.practise
+
+  const navigate = useNavigate();
+
+  // styles = {
+
+  // }
 
 
 
@@ -62,17 +74,20 @@ export default function Practice() {
 
                                           ?
 
-                                          <div>
-                                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/121px-PDF_file_icon.svg.png"
-                                              alt={item_3.content_data.content_info.name} className="img-fluid" />
+                                          <a 
+                                          onClick={ () => navigate('/pdf',{state : item_3.content_data.content_info})  }
+                                          >
 
-                                            <p>{item_3.content_data.content_info.name}</p>
-                                          </div>
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/121px-PDF_file_icon.svg.png"
+                                              alt={item_3.content_data.content_info.name}  />
+
+                                            {/* <p>{item_3.content_data.content_info.name}</p> */}
+                                          </a>
 
                                           :
                                           <div class="col-xl-3 col-lg-4 col-md-6">
-                                            <img src={item_3.content_data.content_info.thumbnail} className="img-fluid" />
-                                            <h5>{item_3.content_data.content_info.name}</h5>
+                                            <img src={item_3.content_data.content_info.thumbnail} style={{ height: "auto" }} />
+                                            {/* <h5>{item_3.content_data.content_info.name}</h5> */}
                                           </div>
                                       }
                                       <br />

@@ -10,7 +10,7 @@
 }
 
 .chapter-components {
-    padding-top: 100px;
+    padding-top: 120px;
 }
 
 img {
@@ -18,3 +18,9 @@ img {
     border-radius: 20px;
 
 }
+
+.hovered {
+    background-color: blue;
+    color: white;
+  }
+  

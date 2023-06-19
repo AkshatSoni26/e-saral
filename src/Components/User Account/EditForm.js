@@ -1,7 +1,22 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import axios from "axios";
+import {  MDBAlert } from 'mdb-react-ui-kit';
+import { Alert } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+
+
+
+const URL = "https://development.esaral.com/v2/users/update-profile"
 
 export default function EditForm() {
-  const profile = JSON.parse(sessionStorage.getItem("info")).profile;
+
+  // const triggerItem = useRef();
+
+  // const triggerItem1 = useRef(null);
+
+  const navigate = useNavigate();
+
+  const profile = JSON.parse(localStorage.getItem("info")).profile;
 
   const containerStyle = {
     padding: "0 350px 350px 350px",
@@ -13,16 +28,54 @@ export default function EditForm() {
     number: profile.phone_number,
   });
 
+
+  //   const EditFormDataRequest = axios.post(URL,{
+  //     "full_name" : profile.full_name,
+  // })
+
   //   const { name, number } = formData;
 
   const handleSubmit = (e) => {
-    alert("A name was submitted: " + formData.name);
+
+    let a = window.confirm(`A name was submitted: ${formData.name}`);
+
+    console.log(a)
+
+    const Headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + localStorage.getItem("Access Key")
+    };
+
+    if (a == true) {
+      axios.post(URL, {
+        "full_name": formData.name,
+      },
+        { headers: Headers }
+
+      ).then((response) => {
+        console.log("successfully add the name");
+        navigate("/")
+        // triggerItem.current.show();
+        // return (
+        //   <Alert key="success" variant="success" >
+        //   This is a success alert—check it out!
+        // </Alert>
+        // )
+      })
+        .catch((error) => {
+          console.log("some error occurred");
+          // triggerItem1.current.show();
+        }
+        )
+    }
 
     console.log("handle Submit", formData.name);
     e.preventDefault();
     // Do something with the form data, like making an API call or updating state
     console.log(formData);
   };
+
+
   return (
     <div style={containerStyle}>
       <form onSubmit={handleSubmit}>
@@ -71,6 +124,42 @@ export default function EditForm() {
           </button>
         </div>
       </form>
+
+      {/* <MDBAlert
+        color='success'
+        autohide
+        width={800}
+        position='top-right'
+        offset={50}
+        delay={2000}
+        appendToBody
+        triggerRef={triggerItem}
+      >
+        A simple success alert with
+        <a href='#' className='alert-link'>
+          an example link
+        </a>
+        . Give it a click if you like.
+      </MDBAlert>
+
+      <MDBAlert
+        color='danger'
+        autohide
+        width={800}
+        position='top-right'
+        offset={50}
+        delay={2000}
+        appendToBody
+        triggerRef={triggerItem1}
+      >
+        A simple danger alert with
+        <a href='#' className='alert-link'>
+          an example link
+        </a>
+        . Give it a click if you like.
+      </MDBAlert> */}
+
+
     </div>
   );
 }
