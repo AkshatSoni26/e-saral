@@ -80,13 +80,14 @@ export default function EditForm() {
     <div style={containerStyle}>
       <form onSubmit={handleSubmit}>
         <div class="form-group">
-          <label for="exampleInputEmail1">User Name </label>
+          <label htmlFor="exampleInputEmail1">User Name </label>
           <input
             type="text"
             class="form-control"
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             value={formData.name}
+            
             onChange={(event) =>
               setFormData({ ...formData, name: event.target.value })
             }
@@ -119,7 +120,10 @@ export default function EditForm() {
           style={{
             paddingLeft: "40%",
           }}>
-          <button type="submit" class="btn btn-primary">
+
+          <button 
+          disabled = {formData.name == profile.full_name} 
+          type="submit" class="btn btn-primary">
             Submit
           </button>
         </div>

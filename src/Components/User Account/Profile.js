@@ -21,15 +21,11 @@ export default function Profile() {
   return (
     <div>
 
-
       <Header />
 
     <UserInfo PROFILE_DATA={PROFILE_DATA} ICON_SIZE = {ICON_SIZE} />
 
     <CourseInfo  ENROLLMENT_DATA={ENROLLMENT_DATA} ICON_SIZE = {ICON_SIZE} />
-
-
-
       
     </div>
   );
