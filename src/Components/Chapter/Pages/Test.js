@@ -9,15 +9,18 @@ import ScrollBAr from '../ComponentsOfChapeters/ScrollBAr';
 // import TestPage from './ContentPage';
 
 import '../../CSS/carsoul.css'
+import Spinner from 'react-bootstrap/Spinner';
 
 
 export default function Test() {
 
-  const location = useLocation();
+ 
 
   console.log("Under the Test Page")
 
   const [data, setData] = useState();
+
+  const location = useLocation();
 
 
   useEffect(
@@ -72,8 +75,12 @@ export default function Test() {
   return (
 
     (!data) ?
-
-      (<div>Loading...</div>)
+    <div style={{marginTop:"50vh",
+    marginLeft: "50vw"}}>
+    <Spinner animation="border" role="status">
+    <span className="visually-hidden">Loading...</span>
+  </Spinner>
+  </div>
       :
 
       <div>

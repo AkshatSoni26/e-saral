@@ -6,12 +6,14 @@ import UserProfile from './User/UserProfile';
 
 import SubjectData from './Subject/SubjectData';
 
-import Test from './Chapter/Pages/Test'
+// import Test from '\/Test.js'
 
 import Profile from './User Account/Profile';
 import Edit from './User Account/Edit';
-
+import Test from './Chapter/Pages/Test';
 import { useEffect } from 'react';
+import ExamPrepTest from './ExamPrepTest/ExamPrepTest';
+import PDFViewer from './PDFViewer/PDFViewer';
 
 
 function App() {
@@ -44,6 +46,12 @@ const navigate = useNavigate();
       <Route path="/profile" element ={<Profile />} />
 
       <Route path="/edit" element= {<Edit />} />
+
+      <Route  path="/ExamPrepTest" element= {<ExamPrepTest />} />
+
+      <Route path="/pdf" element= {<PDFViewer />} />
+
+
 
     </Routes>
 

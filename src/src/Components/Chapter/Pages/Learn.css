@@ -18,3 +18,7 @@ img {
     border-radius: 20px;
 
 }
+
+.button_effect:active {
+    color :rgb(255, 3, 3)
+}

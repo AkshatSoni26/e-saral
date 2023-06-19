@@ -9,6 +9,9 @@ import ScrollBAr from '../ComponentsOfChapeters/ScrollBAr';
 // import TestPage from './ContentPage';
 
 import '../../CSS/carsoul.css'
+import Spinner from 'react-bootstrap/Spinner';
+
+
 
 
 export default function Test() {
@@ -72,8 +75,12 @@ export default function Test() {
   return (
 
     (!data) ?
-
-      (<div>Loading...</div>)
+<div style={{marginTop:"50vh",
+        marginLeft: "50vw"}}>
+    <Spinner animation="border" role="status">
+    <span className="visually-hidden">Loading...</span>
+  </Spinner>
+  </div>
       :
 
       <div>
@@ -81,9 +88,14 @@ export default function Test() {
           <Header2 />
         </div>
 
+
         <div className='chapter-components'>
 
+
+
           {data.ButtonClicked == 'learn' && <Learn />}
+
+          
 
           {data.ButtonClicked == 'practise' && <Practice />}
 
@@ -92,7 +104,7 @@ export default function Test() {
           {data.ButtonClicked == 'test' && <TestPage />}
 
         </div>
-
+        
       </div>
   );
 };

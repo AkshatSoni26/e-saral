@@ -16,7 +16,7 @@ import { store } from './redux/Store';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
-  // <React.StrictMode>
+  <React.StrictMode>
   <Provider store={store} >
     
     <BrowserRouter>
@@ -25,7 +25,7 @@ root.render(
 
 
    </Provider>
-  //  </React.StrictMode>
+  </React.StrictMode>
 
 );
 

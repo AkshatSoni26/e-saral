@@ -85,9 +85,15 @@ console.log('Condition for this', !COND)
 
             <Header />
 
+            <section>
             <FacultiUi faculties={faculties} />
 
+            </section>
+
+<section>
+
             <SubjectUi subjects={subjects} />
+</section>
 
         </>
     )

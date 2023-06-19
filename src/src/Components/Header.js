@@ -11,6 +11,11 @@ import { MDBDropdown, MDBDropdownMenu, MDBDropdownToggle, MDBDropdownItem } from
 
 import { setGlobalVariable } from "./service folder/Service";
 
+import Spinner from 'react-bootstrap/Spinner';
+
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
+
 
 export default function Header() {
   console.log();
@@ -51,8 +56,17 @@ export default function Header() {
 
 
   return !uData ? (
-    <div>Loading . . . </div>
-  ) : (
+    <div style={{marginTop:"50vh",
+        marginLeft: "50vw"}}>
+    <Spinner animation="border" role="status">
+    <span className="visually-hidden">Loading...</span>
+  </Spinner>
+  </div>
+  ) 
+  
+  :
+  
+  (
     <div>
       <div className="sticky">
         <Navbar className="text-light" bg="dark" expand="lg">

@@ -85,35 +85,6 @@ export default function Header2() {
                         Test
                     </a>
 
-                    {/* {
-                        (dataState === 'learn') &&
-
-                        <div id='Button-info'>  {dict['learn']} </div>
-
-                    }
-
-                    {
-                        (dataState === 'practice') &&
-
-                        <div id='Button-info'>  {dict['practice']}</div>
-
-                    }
-
-                    {
-                        (dataState === 'revise') &&
-
-                        <div id='Button-info'> {dict['revise']}</div>
-
-                    }
-
-                    {
-                        (dataState === 'test') &&
-
-                        <div id='Button-info'>  {dict['test']} </div>
-
-                    } */}
-
-
 
                 </div>
             </div>

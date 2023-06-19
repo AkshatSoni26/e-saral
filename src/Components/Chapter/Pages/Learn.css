@@ -18,3 +18,9 @@ img {
     border-radius: 20px;
 
 }
+
+.hovered {
+    background-color: blue;
+    color: white;
+  }
+  

@@ -10,7 +10,7 @@ import "../Components/CSS/Header.css";
 import { MDBDropdown, MDBDropdownMenu, MDBDropdownToggle, MDBDropdownItem } from 'mdb-react-ui-kit';
 
 import { setGlobalVariable } from "./service folder/Service";
-
+import Spinner from 'react-bootstrap/Spinner';
 
 export default function Header() {
   console.log();
@@ -47,12 +47,20 @@ export default function Header() {
     });
  
     navigate('/')
+    window.location.reload();
 
   }
 
 
   return !uData ? (
-    <div>Loading . . . </div>
+
+    <div style={{marginTop:"50vh",
+        marginLeft: "50vw"}}>
+    <Spinner animation="border" role="status">
+      <span className="visually-hidden">Loading...</span>
+    </Spinner>
+    </div>
+
   ) : (
     <div>
       <div className="sticky">

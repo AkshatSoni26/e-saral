@@ -14,6 +14,10 @@ const Links = () => {
     <Link to="/profile"></Link>
     <Link to="/edit"></Link>
 
+    <Link to="/ExamPrepTest"></Link>
+
+    <Link to="/pdf"></Link>
+
     </>
   )
 }

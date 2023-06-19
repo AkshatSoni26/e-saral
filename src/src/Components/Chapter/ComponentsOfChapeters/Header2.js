@@ -14,6 +14,9 @@ import Learn from '../Pages/Learn';
 import Practice from '../Pages/Practice';
 import Revise from '../Pages/Revise';
 import Test from '../Pages/Test';
+import Tab from 'react-bootstrap/Tab';
+import Tabs from 'react-bootstrap/Tabs';
+
 
 
 export default function Header2() {
@@ -69,21 +72,23 @@ export default function Header2() {
 
                 <div className='heading'>
 
-                    <a className='button_effect' onClick={ () => TabChange('learn') }>
+                    
+
+                    <button className='button_effect' onClick={ () => TabChange('learn') }>
                         Learn
-                    </a>
+                    </button>
 
-                    <a className='button_effect' onClick={() => TabChange('practise')}>
+                    <button className='button_effect' onClick={() => TabChange('practise')}>
                         Practice
-                    </a>
+                    </button>
 
-                    <a className='button_effect' onClick={() => TabChange('revise')}>
+                    <button className='button_effect' onClick={() => TabChange('revise')}>
                         Revise
-                    </a>
+                    </button>
 
-                    <a className='button_effect' onClick={() => TabChange('test')}>
+                    <button className='button_effect' onClick={() => TabChange('test')}>
                         Test
-                    </a>
+                    </button>
 
                     {/* {
                         (dataState === 'learn') &&

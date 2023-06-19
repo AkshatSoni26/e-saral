@@ -16,17 +16,18 @@ import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import SubjectHeader from './SubjectHeader';
 
+import Spinner from 'react-bootstrap/Spinner';
 
 
 
 
-const URL = 'https://development.esaral.com/v2/contents/get-node-content-tree';
 
 
 const context_data_1 = createContext();
 const context_data_2 = createContext();
 
 function SubjectData() {
+
 
     const [chapters, setChapter] = useState();
 
@@ -37,13 +38,17 @@ function SubjectData() {
 
     const [NodeIdStored, setNodeIdStored] = useState('');
 
-    const Headers = {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + localStorage.getItem("Access Key")
-    };
+    
 
     useEffect(
         () => {
+
+            const URL = 'https://development.esaral.com/v2/contents/get-node-content-tree';
+
+            const Headers = {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem("Access Key")
+            };
 
             axios.post(URL,
                 {
@@ -83,7 +88,12 @@ function SubjectData() {
 
         (!chapters)
             ?
-            <div className='text-center' id="user_id" > Loading...</div >
+            <div style={{marginTop:"50vh",
+        marginLeft: "50vw"}}>
+            <Spinner animation="border" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+          </div>
             :
             <>
 

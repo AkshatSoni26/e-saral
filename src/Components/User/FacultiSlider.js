@@ -42,7 +42,7 @@ const FacultiChapterSlider = ({ faculties }) => {
           (facultie, index) => {
             return (
               <div className="ChapterSlider" id='zoom-effect' key={index}>
-                <img src={facultie.thumbnail} alt="movie" />
+                <img src={facultie.thumbnail} className="b-block border rounded-3 shadow-sm" alt="movie" />
                 <div className="card-body">
                   <p className="card-text">{facultie.name}</p>
                   <p className="card-text">{facultie.designation}</p>

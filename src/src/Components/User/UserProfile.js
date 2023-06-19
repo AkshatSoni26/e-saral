@@ -6,6 +6,7 @@ import UserUi from "./UserUi"
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { getGlobalVariable } from '../service folder/Service';
+import Spinner from 'react-bootstrap/Spinner';
 
 const UserProfile = () => {
 
@@ -100,7 +101,13 @@ const UserProfile = () => {
     return (
         (!data.data) 
         ? 
-        <div className = 'text-center' id = "user_id" > Loading...</div >
+
+        <div style={{marginTop:"50vh",
+        marginLeft: "50vw"}}>
+            
+            <Spinner  animation="grow" />
+
+        </div>
         :
         <>
         {console.log("before UserUI",data)}

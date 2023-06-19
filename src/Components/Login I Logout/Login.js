@@ -2,6 +2,7 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import {useEffect} from 'react'
 import axios from 'axios';
+import Spinner from 'react-bootstrap/Spinner';
 
 
 function Login() {
@@ -80,9 +81,15 @@ else {
       })
 
     return (
-        <h3>
-            <div className='text-center' id="id">Loading...</div>
-        </h3>
+
+        <div style={{marginTop:"50vh",
+        marginLeft: "50vw"}}>
+
+        
+        <Spinner animation="border" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
+      </div>
     )
 };
 
