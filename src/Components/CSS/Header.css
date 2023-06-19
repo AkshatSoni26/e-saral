@@ -1,3 +1,7 @@
+/* #shadow-effect {
+    /* position: fixed; */
+    /* perspective: 1000px; */
+  /* transform: rotateX(20deg) rotateY(10deg); */
 
 
 .sticky {
@@ -15,6 +19,8 @@ div.header1 {
     z-index: 1000;
     color: aliceblue;
     background-color: #212529!important ;
+    /* perspective: 40px;
+    box-shadow :#0080ff; */
 }
 
 .heading {

@@ -2,7 +2,7 @@ import React from "react";
 import "./account.css";
 import UserInfo from "./UserInfo";
 import CourseInfo from "./courseInfo";
-import Header from "../Header";
+import Header from "../Header/Header";
 
 export default function Profile() {
   const ICON_SIZE = {

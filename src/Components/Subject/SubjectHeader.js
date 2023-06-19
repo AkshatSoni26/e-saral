@@ -4,7 +4,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import { authFunction } from "../Login I Logout/Logout";
 import "../CSS/Header.css";
-import Header from "../Header";
+import Header from "../Header/Header";
 
 export default function SubjectHeader() {
   return <Header />;

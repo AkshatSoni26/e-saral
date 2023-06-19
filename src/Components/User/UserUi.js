@@ -1,10 +1,9 @@
 // This is UI interface Component all UI part handle this.
 
 import React, { useEffect } from "react";
-
-import Header from "../Header";
 import FacultiUi from "./FacultiUi";
 import SubjectUi from "./SubjectUi";
+import Header from "../Header/Header";
 
 const UserUi = (props) => {
   console.log("props under the User UI", props.data);
