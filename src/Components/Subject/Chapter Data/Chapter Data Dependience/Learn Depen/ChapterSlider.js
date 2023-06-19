@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import '../../../../CSS/carsoul.css'
+import "../../../../CSS/carsoul.css";
 
 import { ChapterData_1 } from "../../ChapterData";
 
@@ -9,33 +9,29 @@ const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
     items: 4,
-    slidesToSlide: 4 // optional, default to 1.
+    slidesToSlide: 4, // optional, default to 1.
   },
   tablet: {
     breakpoint: { max: 1024, min: 768 },
     items: 3,
-    slidesToSlide: 3 // optional, default to 1.
+    slidesToSlide: 3, // optional, default to 1.
   },
   mobile: {
     breakpoint: { max: 767, min: 464 },
     items: 2,
-    slidesToSlide: 1 // optional, default to 1.
-  }
+    slidesToSlide: 1, // optional, default to 1.
+  },
 };
 
 const ChapterSlider = () => {
-
-  const data = useContext(ChapterData_1)
+  const data = useContext(ChapterData_1);
   // console.log('slider',data.content.learn)
 
+  const chapter_data = data.content.learn;
 
-  const chapter_data = data.content.learn
-
-
-   return (
-  //  <h1>slider</h1>
+  return (
+    //  <h1>slider</h1>
     <div className="parent">
-
       <Carousel
         responsive={responsive}
         // autoPlay={true}
@@ -46,35 +42,37 @@ const ChapterSlider = () => {
         partialVisible={true}
         // dotListClass="custom-dot-list-style"
       >
-        {(chapter_data).map(
-            (chapter, index) => {
-            return (
-              <div className="ChapterSlider zoom-effect"  key={index}>
+        {chapter_data.map((chapter, index) => {
+          return (
+            <div className="ChapterSlider zoom-effect" key={index}>
+              {
+                // Thumbnail error handling
 
-                {
-                  // Thumbnail error handling
-
-                  (chapter && chapter.content_data && chapter.content_data.content_info && chapter.content_data.content_info.thumbnail) 
-                  
-                  ? 
-
-                  <img src={chapter && chapter.content_data && chapter.content_data.content_info && chapter.content_data.content_info.thumbnail} alt="thumbnail" />
-
-                  :
-                  <img src="https://www.contentviewspro.com/wp-content/uploads/2017/07/default_image.png" alt="thumbnail" />
-                }
-
-                {/* <div className="card-body">
-                  <p className="card-text">{facultie.name}</p>
-                  <p className="card-text">{facultie.designation}</p>
-                </div> */}
-              
-              </div>
-            );
-          })}
+                chapter &&
+                chapter.content_data &&
+                chapter.content_data.content_info &&
+                chapter.content_data.content_info.thumbnail ? (
+                  <img
+                    src={
+                      chapter &&
+                      chapter.content_data &&
+                      chapter.content_data.content_info &&
+                      chapter.content_data.content_info.thumbnail
+                    }
+                    alt="thumbnail"
+                  />
+                ) : (
+                  <img
+                    src="https://www.contentviewspro.com/wp-content/uploads/2017/07/default_image.png"
+                    alt="thumbnail"
+                  />
+                )
+              }
+            </div>
+          );
+        })}
       </Carousel>
     </div>
   );
 };
 export default ChapterSlider;
-

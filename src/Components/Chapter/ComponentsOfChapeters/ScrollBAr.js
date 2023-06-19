@@ -5,9 +5,6 @@ import GroupIcon from '@rsuite/icons/legacy/Group';
 import MagicIcon from '@rsuite/icons/legacy/Magic';
 import GearCircleIcon from '@rsuite/icons/legacy/GearCircle';
 import "rsuite/dist/rsuite.css"
-import { Link } from 'react-router-dom';
-import HoveringEffectInSideBar from '../../Subject/Side Bar/HoveringEffectInSideBar';
-// import { context_data_1 } from '../../Subject/SubjectData';
 import '../../CSS/App.css'
 
 
@@ -17,13 +14,6 @@ export default function ScrollBAr() {
   const [expanded, setExpanded] = useState(true);
   const [activeKey, setActiveKey] = useState('1');
 
-  // const chapters = useContext(context_data_1);
-
-  // function handleChange(i) {
-  //   const element = document.getElementById(`chapter-${i}`);
-  //   console.log(element)
-  //   element.scrollIntoView();
-  // }
 
   return (
     <div>
@@ -33,21 +23,6 @@ export default function ScrollBAr() {
         <Sidenav.Body >
           <Nav activeKey={activeKey} onSelect={setActiveKey}>
 
-            {/* {
-              (chapters.node_content_tree).map(
-                (response, i) => (
-                  // <div key={i}>
-
-                  <Nav.Item onClick={() => handleChange(i)} style={{paddingLeft: "20px"}}>
-
-                    <HoveringEffectInSideBar display_name = {response.display_name} />
-  
-                  </Nav.Item>
-                  // </div>
-                )
-              )
-            } */}
-
             <Nav.Item eventKey="1" icon={<DashboardIcon />}>
                 Dashboard
               </Nav.Item>
@@ -56,21 +31,7 @@ export default function ScrollBAr() {
               </Nav.Item>
             <Nav.Menu placement="rightStart" eventKey="3" title="Chapters" icon={<MagicIcon />}>
                 <Nav.Item eventKey="3-1">Geo</Nav.Item>
-                {/* {
-                    (chapters.node_content_tree).map(
-                        (response, i) => (                            
-                           <Nav.Item eventKey={`#chapter-${i}`}>
-                            {
-                              (((response.display_name).length) > 7)
-                              ? 
-                              ((response.display_name).slice(0,7)+"...")   
-                              : 
-                              ((response.display_name))
-                            }     
-                                            </Nav.Item>              
-                        )
-                    ) 
-                } */}
+              
 
                 <Nav.Item eventKey="3-2">Devices</Nav.Item>
                 <Nav.Item eventKey="3-3">Loyalty</Nav.Item>

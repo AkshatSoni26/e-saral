@@ -68,6 +68,14 @@ export default function EditForm() {
         }
         )
     }
+    else {
+      const error = validateName();
+      if (error) {
+        const editName = document.getElementById("edit-name");
+        editName.style.color = "red";
+        editName.innerHTML = error;
+      }
+    }
 
     console.log("handle Submit", formData.name);
     e.preventDefault();
@@ -75,6 +83,14 @@ export default function EditForm() {
     console.log(formData);
   };
 
+  function validateName() {
+    if (formData.name === profile.full_name) {
+      return "Don't use previous name";
+    } else if (/[!@#$%^&*(),.?":{}|<>]/.test(formData.name)) {
+      return "Name should not contain special characters";
+    }
+    return "";
+  }
 
   return (
     <div style={containerStyle}>
@@ -100,6 +116,10 @@ export default function EditForm() {
           </small>
         </div>
 
+        <p id="edit-name" style={{ color: "red" }}>
+        {validateName()}
+      </p>
+
         <br />
 
         <div class="form-group">
@@ -113,6 +133,7 @@ export default function EditForm() {
             readOnly // Add the readOnly attribute
           />
         </div>
+        <p id="edit-name"></p>
 
         <br />
 
@@ -122,7 +143,7 @@ export default function EditForm() {
           }}>
 
           <button 
-          disabled = {formData.name == profile.full_name} 
+          disabled = { formData.name == profile.full_name || /[!@#$%^&*(),.?":{}|<>]/.test(formData.name) } 
           type="submit" class="btn btn-primary">
             Submit
           </button>

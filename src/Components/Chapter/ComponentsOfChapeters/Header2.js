@@ -1,94 +1,57 @@
-import React, { useContext, useEffect, useState } from 'react'
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import Container from 'react-bootstrap/Container';
-import { authFunction } from '../../Login I Logout/Logout'; 
-import { useLocation, useNavigate } from 'react-router-dom';
-import '../../CSS/Header.css'
+import React from "react";
 
-import SubjectHeader from '../../Subject/SubjectHeader';
+import { useLocation, useNavigate } from "react-router-dom";
+import "../../CSS/Header.css";
 
-import { ChapterData_1 } from '../../Subject/Chapter Data/ChapterData'; 
-
-import Learn from '../Pages/Learn';
-import Practice from '../Pages/Practice';
-import Revise from '../Pages/Revise';
-import Test from '../Pages/Test';
-
+import SubjectHeader from "../../Subject/SubjectHeader";
 
 export default function Header2() {
+  const navigate = useNavigate();
 
-    // const data = useContext(ChapterData_1)
+  const location = useLocation();
 
-    // const [dataState, setDataState] = useState('learn');
+  const data = location.state.defi;
+  console.log("Header 2 data", data);
 
-    const navigate = useNavigate();
+  console.log("location", location.state);
 
+  function TabChange(a) {
+    const data = JSON.parse(localStorage.getItem("chapter data"));
 
-    // const navigate = useNavigate()
-    const location = useLocation();
+    data["ButtonClicked"] = a;
 
-    const data = location.state.defi
-    console.log("Header 2 data", data)
+    console.log("testing data is work properly or not", data);
 
-    console.log("location", location.state)
+    navigate("/Content", {
+      state: data,
+    });
 
-    // useEffect(
-    //     () => {
-    //         setDataState(location.state.defi)
-    //     }, []
-    // )
+    console.log("moving from on tab to another tab and data is as", data);
+  }
 
-    function TabChange(a) {
-        
-        // const ButtonClicked = a
+  return (
+    <>
+      <SubjectHeader />
 
-        const data = JSON.parse(localStorage.getItem('chapter data'))
+      <div className="header1">
+        <div className="heading">
+          <a className="button_effect" onClick={() => TabChange("learn")}>
+            Learn
+          </a>
 
-        data["ButtonClicked"] = a
+          <a className="button_effect" onClick={() => TabChange("practise")}>
+            Practice
+          </a>
 
-        console.log('testing data is work properly or not',data)
+          <a className="button_effect" onClick={() => TabChange("revise")}>
+            Revise
+          </a>
 
-        navigate('/Content', {
-            state: data
-        }
-        ) 
-
-        console.log('moving from on tab to another tab and data is as', data )} 
-    
-    
-
-
-
-    return (
-        <>
-
-            <SubjectHeader />
-
-            <div className='header1'>
-
-                <div className='heading'>
-
-                    <a className='button_effect' onClick={ () => TabChange('learn') }>
-                        Learn
-                    </a>
-
-                    <a className='button_effect' onClick={() => TabChange('practise')}>
-                        Practice
-                    </a>
-
-                    <a className='button_effect' onClick={() => TabChange('revise')}>
-                        Revise
-                    </a>
-
-                    <a className='button_effect' onClick={() => TabChange('test')}>
-                        Test
-                    </a>
-
-
-                </div>
-            </div>
-
-        </>
-    )
+          <a className="button_effect" onClick={() => TabChange("test")}>
+            Test
+          </a>
+        </div>
+      </div>
+    </>
+  );
 }

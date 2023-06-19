@@ -1,7 +1,6 @@
-
 let myGlobalVariable = {
-    "subcourse_id": 0,
-    "phase_id": 0,
+  subcourse_id: 0,
+  phase_id: 0,
 };
 
 export const getGlobalVariable = () => myGlobalVariable;
