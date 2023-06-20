@@ -1,104 +1,68 @@
 // This is UI interface Component all UI part handle this.
 
-
-import React, { createContext, useEffect } from 'react';
-
-import { useLocation, useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import Header from '../Header';
-import FacultiUi from './FacultiUi';
-import SubjectUi from './SubjectUi';
-
-import { isEqual } from 'lodash';
-
-
-const header_data = createContext();
+import React, { useEffect } from "react";
+import FacultiUi from "./FacultiUi";
+import SubjectUi from "./SubjectUI Comp/SubjectUi";
+import Header from "../Header/Header";
 
 const UserUi = (props) => {
+  console.log("props under the User UI", props.data);
 
-    console.log("props under the User UI", props.data)
+  const enrollments = props.data.data.data.enrollments;
 
-    // console.log(props.data.data.data.enrollments)
+  const faculties = props.data.data.data.faculties;
+  console.log(faculties);
 
-    const enrollments = props.data.data.data.enrollments;
-    // console.log('enrollments', props.data.data.data.enrollments)
+  const profile = props.data.data.data.user;
+  console.log("profile under the user ui", profile);
 
-    // const enrollment = enrollments.find(
-    //     function isenroll(element) {
-    //         return element.is_current === true
-    //     }
-    // )
+  const subjects = props.data.data.data.subjects;
+  console.log(subjects[0].node_id);
 
-    const faculties = props.data.data.data.faculties;
-    console.log(faculties)
+  console.log("WE ARE NOW UNDER THE UserUi", props.data.data);
 
-    const profile = props.data.data.data.user;
-    console.log("profile under the user ui", profile)
+  useEffect(() => {
+    const INFO = { profile: profile, enrollments: enrollments };
 
-    const subjects = props.data.data.data.subjects;
-    console.log(subjects[0].node_id)
+    const COND = INFO === JSON.parse(localStorage.getItem("info"));
 
+    console.log("Condition for this", !COND);
 
-    console.log("WE ARE NOW UNDER THE UserUi", props.data.data)
+    if (!localStorage.getItem("info")) {
+      localStorage.setItem(
+        "info",
+        JSON.stringify({ profile: profile, enrollments: enrollments })
+      );
+      console.log("successfully update the data under the if block", props);
+    } else if (!COND) {
+      localStorage.removeItem("info");
 
-    useEffect(() => {
+      localStorage.setItem(
+        "info",
+        JSON.stringify({ profile: profile, enrollments: enrollments })
+      );
+    } else {
+      const UdataFromSessionS = JSON.parse(localStorage.getItem("info"));
+      console.log(
+        "successfully update the data under the else block",
+        UdataFromSessionS
+      );
+    }
+  }, []);
 
-        const INFO = { profile: profile, enrollments: enrollments }
+  return (
+    <>
+      <Header />
 
-        const COND = (INFO === JSON.parse(localStorage.getItem("info")))
+      <section>
+        <FacultiUi faculties={faculties} />
+      </section>
 
-console.log('Condition for this', !COND)
-
-
-
-        if ( (!localStorage.getItem("info") ) )
-        {
-            localStorage.setItem("info", JSON.stringify({ profile: profile, enrollments: enrollments }));
-            //   setUdata(props);
-            console.log("successfully update the data under the if block", props);
-        }
-        
-        else if (!COND) {
-
-            // const item = localStorage.getItem('info');
-
-            localStorage.removeItem('info')
-
-            localStorage.setItem("info", JSON.stringify({ profile: profile, enrollments: enrollments }));
-
-
-        }
-        
-        else {
-            const UdataFromSessionS = JSON.parse(localStorage.getItem("info"));
-            //   setUdata(UdataFromSessionS);
-            console.log(
-                "successfully update the data under the else block",
-                UdataFromSessionS
-            );
-        }
-    }, []);
-
-
-    return (
-        <>
-
-            <Header />
-
-            <section>
-            <FacultiUi faculties={faculties} />
-
-            </section>
-
-<section>
-
-            <SubjectUi subjects={subjects} />
-</section>
-
-        </>
-    )
-}
-
+      <section>
+        <SubjectUi subjects={subjects} />
+      </section>
+    </>
+  );
+};
 
 export default UserUi;
-

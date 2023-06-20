@@ -1,124 +1,56 @@
-import React, { useContext } from 'react'
-import PDFViewer from '../../PDFViewer/PDFViewer'
-import { useNavigate } from 'react-router-dom'
-
-
-// import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
-
-
+import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import IsPDF from "../ComponentsOfChapeters/IsPDF";
+import IsVideo from "../ComponentsOfChapeters/IsVideo";
 
 export default function Practice() {
+  const dataFromSession = localStorage.getItem("chapter data"); // Taking data from storage
 
-  const dataFromSession = localStorage.getItem("chapter data") // Taking data from storage
+  const dataConver = JSON.parse(dataFromSession); // Converting data from json to Object
 
-  const dataConver = JSON.parse(dataFromSession) // Converting data from json to Object
-
-  console.log("we are under the Learn components", dataConver.chapterData.content.practise)
-
-  const practise_data = dataConver.chapterData.content.practise
-
-  const navigate = useNavigate();
-
-  // styles = {
-
-  // }
-
-
+  const practise_data = dataConver.chapterData.content.practise;
 
   return (
     <>
-
-      {/* <div>Practics</div> */}
-
       <div>
-        {
-          practise_data.map(
-            (item_1, i) => {
+        {practise_data.map((item_1, i) => {
+          {
+            return item_1.content_data.map((item_2, j) => {
+              return (
+                <div class="container-fluid">
+                  <div class="row gy-4 justify-content-center">
+                    <h2>{item_2.display_name}</h2>
 
-              {
-                return (
-
-                  (item_1.content_data).map(
-
-                    (item_2, j) => {
-
+                    {item_2.sheet_content.map((item_3, k) => {
                       return (
+                        <div class="col-xl-3 col-lg-4 col-md-6">
+                          <h4>{item_3.display_name}</h4>
+                          <p>{item_3.description}</p>
 
-                        <div class="container-fluid">
+                          {/* {console.log("item_3", item_3)} */}
 
-                          <div class="row gy-4 justify-content-center">
-
-                            <h2>{item_2.display_name}</h2>
-
-                            {/* {console.log("item_2.display_name", item_2.display_name)}
-
-                          {console.log('item_2.sheet_content', item_2.sheet_content)} */}
-
-                            {
-                              (item_2.sheet_content).map(
-                                (item_3, k) => {
-                                  return (
-
-                                    <div  class="col-xl-3 col-lg-4 col-md-6">
-                                      {/* <h2>item_2.display_name {item_3.display_name}</h2> */}
-                                      {/* <h5> item_2.description {item_3.description}</h5>  */}
-
-                                      <h4>{item_3.display_name}</h4>
-                                      <p>{item_3.description}</p>
-
-
-                                      {console.log('item_3', item_3)}
-
-                                      {
-                                        (item_3.content_data.content_type == "PDF")
-
-                                          ?
-
-                                          <a 
-                                          onClick={ () => navigate('/pdf',{state : item_3.content_data.content_info})  }
-                                          >
-
-                                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/PDF_file_icon.svg/121px-PDF_file_icon.svg.png"
-                                              alt={item_3.content_data.content_info.name}  />
-
-                                            {/* <p>{item_3.content_data.content_info.name}</p> */}
-                                          </a>
-
-                                          :
-                                          <div class="col-xl-3 col-lg-4 col-md-6">
-                                            <img src={item_3.content_data.content_info.thumbnail} style={{ height: "auto" }} />
-                                            {/* <h5>{item_3.content_data.content_info.name}</h5> */}
-                                          </div>
-                                      }
-                                      <br />
-                                    </div>
-
-                                  )
-                                }
-                              )
-
-                            }
-
-                            <br /><br /><br />
-                          </div>
+                          {item_3.content_data.content_type == "PDF" ? (
+                            <IsPDF
+                              content_info={item_3.content_data.content_info}
+                            />
+                          ) : (
+                            <IsVideo data={item_3} />
+                          )}
+                          <br />
                         </div>
+                      );
+                    })}
 
-
-                      )
-
-                    }
-                  )
-
-
-                )
-              }
-
-            }
-          )
-        }
-
+                    <br />
+                    <br />
+                    <br />
+                  </div>
+                </div>
+              );
+            });
+          }
+        })}
       </div>
-
     </>
-  )
+  );
 }

@@ -1,159 +1,87 @@
-import { useState, useEffect } from 'react';
-import { Document, Page, pdfjs } from 'react-pdf';
-import { useLocation } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { Document, Page, pdfjs } from "react-pdf";
+import { useLocation } from "react-router-dom";
+import HandlePageChangerArrow from "./HandlePageChangerArrow";
 
 // Configure pdfjs worker path
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
-
 function PDFViewer() {
+  const location = useLocation();
 
-    const location = useLocation();
+  console.log("pdfInfo", location.state.pdf_password);
 
-    console.log("pdfInfo", location.state.pdf_password)
+  const [numPages, setNumPages] = useState(null);
+  const [pageNumber, setPageNumber] = useState(1);
 
-    // const styles = {
-    //     page: {
-    //       flexDirection: 'row',
-    //       backgroundColor: '#E4E4E4'
-    //     },
-    //     section: {
-    //       margin: 10,
-    //       padding: 10,
-    //       flexGrow: 1
-    //     }
-    //   }
+  const password = location.state.pdf_password;
 
+  const pdfURL =
+    password.length > 2
+      ? location.state.encrypted_file_url
+      : location.state.original_file_url;
 
-    // const [pdfURL,setURL] = useState();
-
-    // sont [password, setPassward] = useState();
-
-
-
-
-    const [numPages, setNumPages] = useState(null);
-    const [pageNumber, setPageNumber] = useState(1);
-
-    const password = location.state.pdf_password;
-
-    const pdfURL = (password.length > 2) ? (location.state.encrypted_file_url) : location.state.original_file_url
-
-    useEffect(() => {
-        // Load the PDF document and get the total number of pages
-        const loadPDF = async () => {
-            try {
-                const loadingTask = pdfjs.getDocument({ url: pdfURL, password: password });
-                const pdf = await loadingTask.promise;
-                setNumPages(pdf.numPages);
-            } catch (error) {
-                console.error('Error loading PDF:', error);
-            }
-        };
-
-        loadPDF();
-    }, [pdfURL, password]);
-
-    const handlePageChange = (newPageNumber) => {
-        if (newPageNumber < 1) {
-            setPageNumber(1);
-
-        }
-        else if (newPageNumber > numPages) {
-            setPageNumber(numPages);
-        }
-        else {
-            setPageNumber(newPageNumber);
-        }
+  useEffect(() => {
+    // Load the PDF document and get the total number of pages
+    const loadPDF = async () => {
+      try {
+        const loadingTask = pdfjs.getDocument({
+          url: pdfURL,
+          password: password,
+        });
+        const pdf = await loadingTask.promise;
+        setNumPages(pdf.numPages);
+      } catch (error) {
+        console.error("Error loading PDF:", error);
+      }
     };
 
-    // const handleAskPassword = (e:  ) => {
-    //     e.verifyPassword(password);
-    // };
+    loadPDF();
+  }, [pdfURL, password]);
 
-    return (
+  const handlePageChange = (newPageNumber) => {
+    if (newPageNumber < 1) {
+      setPageNumber(1);
+    } else if (newPageNumber > numPages) {
+      setPageNumber(numPages);
+    } else {
+      setPageNumber(newPageNumber);
+    }
+  };
 
-        (password.length > 2)
-            ?
+  return password.length > 2 ? (
+    <div className="text-center ">
 
+      <HandlePageChangerArrow numPages={numPages} pageNumber={pageNumber} handlePageChange={handlePageChange}/>
+     
 
-            <div className='text-center '>
+      <div className="bg-dark">
+        <Document
+          file={pdfURL}
+          onPassword={(callback) => {
+            callback(password);
+          }}
+        >
+          <Page pageNumber={pageNumber} />
+        </Document>
+      </div>
+    </div>
+  ) : (
+    <div>
 
+<HandlePageChangerArrow numPages={numPages} pageNumber={pageNumber} handlePageChange={handlePageChange}/>
 
-                <div className='d-flex justify-content-center bg-dark text-light' >
+      <div className="content">
+        <Document file={pdfURL}>
+          <Page pageNumber={pageNumber} />
+        </Document>
+        <p className="text-center">
+          Page {pageNumber} / {numPages}
+        </p>
 
-
-
-                    <div className='d-flex justify-content-center' >
-
-                        <a
-                            disabled={pageNumber <= 1}
-                            onClick={() => handlePageChange(pageNumber - 1)}
-                        >
-                            &larr;
-                        </a>
-
-                        &ensp;
-
-                        <p className='text-center' >Page {pageNumber} / {numPages}</p>  &ensp; &ensp;
-
-
-                        &ensp;
-
-                        <a
-                            disabled={pageNumber >= numPages}
-                            onClick={() => handlePageChange(pageNumber + 1)}
-                        >
-                            &rarr;
-                        </a>
-                    </div>
-
-                </div>
-
-                <div className='bg-dark'>
-
-                    <Document file={pdfURL}
-
-                        onPassword={(callback) => {
-                            callback(password);
-                        }}
-
-                    >
-                        <Page pageNumber={pageNumber} />
-                    </Document>
-
-                </div>
-            </div>
-
-            :
-
-            <div>
-                <Document file={pdfURL} >
-                    <Page pageNumber={pageNumber} />
-                </Document>
-                <p className='text-center' >Page {pageNumber} / {numPages}</p>
-
-                <div className='d-flex justify-content-center' >
-
-
-
-                    <button className=' btn btn-primary'
-                        disabled={pageNumber <= 1}
-                        onClick={() => handlePageChange(pageNumber - 1)}
-                    >
-                        &larr; Previous Page
-                    </button>
-                    &ensp;
-                    <button className=' btn btn-primary'
-                        disabled={pageNumber >= numPages}
-                        onClick={() => handlePageChange(pageNumber + 1)}
-                    >
-                        Next Page &rarr;
-                    </button>
-                </div>
-            </div>
-
-    );
+      </div>
+    </div>
+  );
 }
 
 export default PDFViewer;

@@ -6,15 +6,12 @@
   body{
     background: #000;
   }
-
-  img:hover {
-    transition: transform 0.5s ease;
-    
-    transform: scale(1.1 ) ;
-
-    
-  }
   
+.hovering-effect:hover {
+    transition: transform 0.5s ease;
+    transform: scale(1.1 ) ;
+  }
+
   .ChapterSlider {
     margin:0 20px;
     overflow:"hidden";

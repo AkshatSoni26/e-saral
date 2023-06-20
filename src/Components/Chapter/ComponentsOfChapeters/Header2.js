@@ -1,94 +1,26 @@
-import React, { useContext, useEffect, useState } from 'react'
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import Container from 'react-bootstrap/Container';
-import { authFunction } from '../../Login I Logout/Logout'; 
-import { useLocation, useNavigate } from 'react-router-dom';
-import '../../CSS/Header.css'
+import React from "react";
 
-import SubjectHeader from '../../Subject/SubjectHeader';
+import { useLocation, useNavigate } from "react-router-dom";
+import "../../CSS/Header.css";
 
-import { ChapterData_1 } from '../../Subject/Chapter Data/ChapterData'; 
-
-import Learn from '../Pages/Learn';
-import Practice from '../Pages/Practice';
-import Revise from '../Pages/Revise';
-import Test from '../Pages/Test';
-
+import SubjectHeader from "../../Subject/SubjectHeader";
+import Header2Tabs from "./Header2Tabs";
 
 export default function Header2() {
+  const location = useLocation();
 
-    // const data = useContext(ChapterData_1)
+  const data = location.state.defi;
+  console.log("Header 2 data", data);
 
-    // const [dataState, setDataState] = useState('learn');
+  console.log("location", location.state);
 
-    const navigate = useNavigate();
+  console.log("moving from on tab to another tab and data is as", data);
 
+  return (
+    <>
+      <SubjectHeader />
 
-    // const navigate = useNavigate()
-    const location = useLocation();
-
-    const data = location.state.defi
-    console.log("Header 2 data", data)
-
-    console.log("location", location.state)
-
-    // useEffect(
-    //     () => {
-    //         setDataState(location.state.defi)
-    //     }, []
-    // )
-
-    function TabChange(a) {
-        
-        // const ButtonClicked = a
-
-        const data = JSON.parse(localStorage.getItem('chapter data'))
-
-        data["ButtonClicked"] = a
-
-        console.log('testing data is work properly or not',data)
-
-        navigate('/Content', {
-            state: data
-        }
-        ) 
-
-        console.log('moving from on tab to another tab and data is as', data )} 
-    
-    
-
-
-
-    return (
-        <>
-
-            <SubjectHeader />
-
-            <div className='header1'>
-
-                <div className='heading'>
-
-                    <a className='button_effect' onClick={ () => TabChange('learn') }>
-                        Learn
-                    </a>
-
-                    <a className='button_effect' onClick={() => TabChange('practise')}>
-                        Practice
-                    </a>
-
-                    <a className='button_effect' onClick={() => TabChange('revise')}>
-                        Revise
-                    </a>
-
-                    <a className='button_effect' onClick={() => TabChange('test')}>
-                        Test
-                    </a>
-
-
-                </div>
-            </div>
-
-        </>
-    )
+      <Header2Tabs data={data} />
+    </>
+  );
 }
