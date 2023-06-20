@@ -1,3 +1,10 @@
+/*-----------------------------------------  Imports  -----------------------------------------------------------*/
+
+import network_error from "C:/Users/eSaral/Documents/verification_login/src/Components/Images/network-error-7294234-5966930.png"
+
+
+/*-----------------------------------------  Random Coming Soon sender  -----------------------------------------------------------*/
+
 function random(mn, mx) {
     return Math.random() * (mx - mn) + mn;
 }
@@ -16,7 +23,6 @@ console.log("ComingSoonUrls",ComingSoonUrls)
 
 /*-----------------------------------------  Network Error  -----------------------------------------------------------*/
 
-import network_error from "C:/Users/eSaral/Documents/verification_login/src/Components/Images/network-error-7294234-5966930.png"
 
 export const NetworkError = network_error
 
