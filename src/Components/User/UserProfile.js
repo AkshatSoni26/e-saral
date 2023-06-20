@@ -8,7 +8,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { getGlobalVariable } from "../Service Folder/Service";
 import SpinnerForLoad from "../Spinner/Spinner";
 import { NetworkError, User_profile_Url } from "../URLS/Urls";
-
+import { errorsDis } from "../Error Messages/Errors";
 
 const UserProfile = () => {
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ const UserProfile = () => {
 
   const [data, setData] = useState({});
 
-  const [error, setError] = useState()
+  const [error, setError] = useState();
 
   const NEW_URL = User_profile_Url;
 
@@ -35,7 +35,6 @@ const UserProfile = () => {
   };
 
   useEffect(() => {
-
     axios
       .post(
         NEW_URL,
@@ -57,7 +56,8 @@ const UserProfile = () => {
       })
       .catch((error) => {
         if (error.message == "Network Error") {
-            setError(error.message)  
+          setError(error.message);
+          // document.getElementById("error-message").innerHTML = errors["Network Error"]
         }
       });
   }, [CourseChange]);
@@ -68,19 +68,35 @@ const UserProfile = () => {
     }
   }, []);
 
-  return (!error) ?
-
-  ((!data.data) ? (
-    <SpinnerForLoad />
+  return ( !error) ? (
+    (!data.data) ? (
+      <SpinnerForLoad />
+    ) : (
+      <>
+        {console.log("before UserUI", data)}
+        <UserUi data={data} />
+      </>
+    )
   ) : (
-    <>
-      {console.log("before UserUI", data)}
-      <UserUi data={data} />
+    <>  
+    <div
+      style={{
+        marginTop: "20vh",
+        marginLeft: "40vw",
+        height: "60%",
+        width: "60%",
+        // marginLeft: "30vw"
+      }}
+    >
+      <img src={NetworkError} style={{ height: "30%", width: "30%" }} />
+      <h2 style={{ marginLeft: "1vw", color: "black" }}>
+        <b> {error} </b>
+      </h2>
+    
+    </div>
+    <h4 id="error-message" className="text-center"> { errorsDis[error] }</h4>
     </>
-  ))
-  :
-  <img src={NetworkError} style={{marginTop:"15vh",
-  marginLeft:"30vw"}} />
+  );
 };
 
 export default UserProfile;

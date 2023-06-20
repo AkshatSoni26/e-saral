@@ -17,10 +17,14 @@ export default function TestPage() {
 
   return (
     <>
-      {!test_data.content_data && test_data.content_data ? (
+
+    {console.log("test_data[0].content_data.length",test_data[0].content_data.length)}
+
+      { (test_data.length == 0) || (test_data[0].content_data.length == 0)
+      ? (
         <ComingSoon />
       ) : (
-        <>
+        <>  
           <div>
             {test_data.map((item_1, i) => {
               console.log("item_1 in test page", item_1);

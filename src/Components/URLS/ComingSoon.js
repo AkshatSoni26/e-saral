@@ -7,8 +7,11 @@ export default function ComingSoon() {
     src= {ComingSoonUrls}
     className="img-fluid"
       style={{
-        paddingTop: "100px",
-        paddingLeft: "550px",
+        // paddingTop: "100px",
+        // paddingLeft: "550px",
+        marginLeft: "40vw",
+        height: '20%',
+        width: "20%"
       }}
     />
   )
