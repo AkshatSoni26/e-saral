@@ -1,8 +1,10 @@
 import React, { useRef, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import {Profile_Update_url} from "../URLS/Urls.js"
 
-const URL = "https://development.esaral.com/v2/users/update-profile";
+
+const URL = Profile_Update_url;
 
 export default function EditForm() {
   const navigate = useNavigate();
@@ -56,7 +58,6 @@ export default function EditForm() {
 
     console.log("handle Submit", formData.name);
     e.preventDefault();
-    // Do something with the form data, like making an API call or updating state
     console.log(formData);
   };
 

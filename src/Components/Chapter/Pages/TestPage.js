@@ -1,4 +1,6 @@
 import React from "react";
+import ComingSoon from "../../URLS/ComingSoon";
+import TestCompStart from "../ComponentsOfChapeters/TestCompStart";
 
 export default function TestPage() {
   const dataFromSession = localStorage.getItem("chapter data"); // Taking data from storage
@@ -15,15 +17,8 @@ export default function TestPage() {
 
   return (
     <>
-      {test_data.length == 1 && !test_data.content_data ? (
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI8PR0ho9yYxHdvd3jNy8Cm6dl_EOi_WdXLNHEHb7O&s"
-          className="img-fluid"
-          style={{
-            paddingTop: "100px",
-            paddingLeft: "550px",
-          }}
-        />
+      {!test_data.content_data && test_data.content_data ? (
+        <ComingSoon />
       ) : (
         <>
           <div>
@@ -34,29 +29,13 @@ export default function TestPage() {
                 <div key={i}>
                   {item_1.content_data.map((item_2, j) => {
                     console.log("item 2", item_2);
-                    return (
-                      <div className="container">
-                        <div className="row">
-                          <div className="col-md-10">
-                            <h3 className="text-dark">
-                              {" "}
-                              {item_2.display_name}{" "}
-                            </h3>
-                          </div>
-
-                          <div className="col-md-2">
-                            <button className="btn btn-primary text-right">
-                              Start Test
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    );
+                    return <TestCompStart item_2={item_2} />;
                   })}
                 </div>
               );
             })}
           </div>
+          <br />
         </>
       )}
     </>

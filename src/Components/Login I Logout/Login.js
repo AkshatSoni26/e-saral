@@ -1,9 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import axios from "axios";
-import SpinnerForLoad from "../Spinner";
-
-
+import SpinnerForLoad from "../Spinner/Spinner";
 
 function Login() {
   const navigate = useNavigate();
@@ -67,9 +65,7 @@ function Login() {
     }
   });
 
-  return (
-    <SpinnerForLoad />
-  );
+  return <SpinnerForLoad />;
 }
 
 export default Login;

@@ -5,10 +5,8 @@ import Practice from "./Practice";
 import Revise from "./Revise";
 import TestPage from "./TestPage";
 import Header2 from "../ComponentsOfChapeters/Header2";
-
 import "../../CSS/carsoul.css";
-import SpinnerForLoad from "../../Spinner";
-
+import SpinnerForLoad from "../../Spinner/Spinner";
 
 export default function Test() {
   console.log("Under the Test Page");
@@ -63,6 +61,9 @@ export default function Test() {
     }
   }, [location]);
 
+  const ButtonClickedInfo = ["learn", "practise", "revise", "test"];
+  const ButtonClickedComp = [<Learn />, <Practice />, <Revise />, <TestPage />];
+
   return !data ? (
     <SpinnerForLoad />
   ) : (
@@ -72,13 +73,13 @@ export default function Test() {
       </div>
 
       <div className="chapter-components">
-        {data.ButtonClicked == "learn" && <Learn />}
-
-        {data.ButtonClicked == "practise" && <Practice />}
-
-        {data.ButtonClicked == "revise" && <Revise />}
-
-        {data.ButtonClicked == "test" && <TestPage />}
+        {ButtonClickedInfo.map((buttoninfo, index) => {
+          console.log(
+            "data.ButtonClicked == data && ButtonClickedComp[index]",
+            data.ButtonClicked == data && ButtonClickedComp[index]
+          );
+          return data.ButtonClicked == buttoninfo && ButtonClickedComp[index];
+        })}
       </div>
     </div>
   );

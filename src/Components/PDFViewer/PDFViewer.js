@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Document, Page, pdfjs } from "react-pdf";
 import { useLocation } from "react-router-dom";
+import HandlePageChangerArrow from "./HandlePageChangerArrow";
 
 // Configure pdfjs worker path
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
@@ -50,27 +51,9 @@ function PDFViewer() {
 
   return password.length > 2 ? (
     <div className="text-center ">
-      <div className="d-flex justify-content-center bg-dark text-light">
-        <div className="d-flex justify-content-center">
-          <a
-            disabled={pageNumber <= 1}
-            onClick={() => handlePageChange(pageNumber - 1)}
-          >
-            &larr;
-          </a>
-          &ensp;
-          <p className="text-center">
-            Page {pageNumber} / {numPages}
-          </p>{" "}
-          &ensp; &ensp; &ensp;
-          <a
-            disabled={pageNumber >= numPages}
-            onClick={() => handlePageChange(pageNumber + 1)}
-          >
-            &rarr;
-          </a>
-        </div>
-      </div>
+
+      <HandlePageChangerArrow numPages={numPages} pageNumber={pageNumber} handlePageChange={handlePageChange}/>
+     
 
       <div className="bg-dark">
         <Document
@@ -85,7 +68,9 @@ function PDFViewer() {
     </div>
   ) : (
     <div>
-      <div className="overlay"></div>
+
+<HandlePageChangerArrow numPages={numPages} pageNumber={pageNumber} handlePageChange={handlePageChange}/>
+
       <div className="content">
         <Document file={pdfURL}>
           <Page pageNumber={pageNumber} />
@@ -94,23 +79,6 @@ function PDFViewer() {
           Page {pageNumber} / {numPages}
         </p>
 
-        <div className="d-flex justify-content-center">
-          <button
-            className=" btn btn-primary"
-            disabled={pageNumber <= 1}
-            onClick={() => handlePageChange(pageNumber - 1)}
-          >
-            &larr; Previous Page
-          </button>
-          &ensp;
-          <button
-            className=" btn btn-primary"
-            disabled={pageNumber >= numPages}
-            onClick={() => handlePageChange(pageNumber + 1)}
-          >
-            Next Page &rarr;
-          </button>
-        </div>
       </div>
     </div>
   );

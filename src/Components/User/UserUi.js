@@ -2,7 +2,7 @@
 
 import React, { useEffect } from "react";
 import FacultiUi from "./FacultiUi";
-import SubjectUi from "./SubjectUi";
+import SubjectUi from "./SubjectUI Comp/SubjectUi";
 import Header from "../Header/Header";
 
 const UserUi = (props) => {

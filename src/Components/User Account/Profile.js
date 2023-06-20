@@ -5,11 +5,6 @@ import CourseInfo from "./courseInfo";
 import Header from "../Header/Header";
 
 export default function Profile() {
-  const ICON_SIZE = {
-    width: "50",
-    hight: "50",
-  };
-
   const info = JSON.parse(localStorage.getItem("info"));
   const PROFILE_DATA = info.profile;
 
@@ -20,19 +15,11 @@ export default function Profile() {
 
   return (
     <div>
-
       <Header />
 
-    <UserInfo PROFILE_DATA={PROFILE_DATA} ICON_SIZE = {ICON_SIZE} />
+      <UserInfo PROFILE_DATA={PROFILE_DATA} />
 
-    <CourseInfo  ENROLLMENT_DATA={ENROLLMENT_DATA} ICON_SIZE = {ICON_SIZE} />
-      
+      <CourseInfo ENROLLMENT_DATA={ENROLLMENT_DATA} />
     </div>
   );
 }
-
-
-
-
-
-

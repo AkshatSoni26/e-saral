@@ -6,8 +6,6 @@ import UserProfile from "./User/UserProfile";
 
 import SubjectData from "./Subject/SubjectData";
 
-// import Test from '\/Test.js'
-
 import Profile from "./User Account/Profile";
 import Edit from "./User Account/Edit";
 import Test from "./Chapter/Pages/Test";

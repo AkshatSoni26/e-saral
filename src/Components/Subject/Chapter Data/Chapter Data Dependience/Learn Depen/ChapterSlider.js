@@ -4,6 +4,7 @@ import "react-multi-carousel/lib/styles.css";
 import "../../../../CSS/carsoul.css";
 
 import { ChapterData_1 } from "../../ChapterData";
+import { NotThumbnialFound } from "../../../../URLS/Urls";
 
 const responsive = {
   desktop: {
@@ -63,7 +64,7 @@ const ChapterSlider = () => {
                   />
                 ) : (
                   <img className="hovering-effect"
-                    src="https://www.contentviewspro.com/wp-content/uploads/2017/07/default_image.png"
+                    src={NotThumbnialFound}
                     alt="thumbnail"
                   />
                 )

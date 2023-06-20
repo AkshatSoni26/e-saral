@@ -5,9 +5,9 @@ import axios from "axios";
 import UserUi from "./UserUi";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import { getGlobalVariable } from "../service folder/Service";
-import SpinnerForLoad from "../Spinner";
-
+import { getGlobalVariable } from "../Service Folder/Service";
+import SpinnerForLoad from "../Spinner/Spinner";
+import { NetworkError, User_profile_Url } from "../URLS/Urls";
 
 
 const UserProfile = () => {
@@ -21,7 +21,9 @@ const UserProfile = () => {
 
   const [data, setData] = useState({});
 
-  const NEW_URL = "https://development.esaral.com/v2/users/home";
+  const [error, setError] = useState()
+
+  const NEW_URL = User_profile_Url;
 
   console.log(data);
 
@@ -54,7 +56,9 @@ const UserProfile = () => {
         }
       })
       .catch((error) => {
-        console.log(error);
+        if (error.message == "Network Error") {
+            setError(error.message)  
+        }
       });
   }, [CourseChange]);
 
@@ -64,14 +68,19 @@ const UserProfile = () => {
     }
   }, []);
 
-  return !data.data ? (
+  return (!error) ?
+
+  ((!data.data) ? (
     <SpinnerForLoad />
   ) : (
     <>
       {console.log("before UserUI", data)}
       <UserUi data={data} />
     </>
-  );
+  ))
+  :
+  <img src={NetworkError} style={{marginTop:"15vh",
+  marginLeft:"30vw"}} />
 };
 
 export default UserProfile;

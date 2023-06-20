@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import SpinnerForLoad from "../Spinner";
+import SpinnerForLoad from "../Spinner/Spinner";
 
 
 
@@ -35,7 +35,7 @@ export default function ExamPrepTest() {
         { headers: Headers }
       )
       .then((response) => {
-        // console.log("Exam Prep data 1",response.data.data.node_content_tree );
+        console.log("Exam Prep data 1",response.data.data.node_content_tree );
 
         if (response.status === 200) {
           console.log("Exam Prep data", response.data.data.node_content_tree);

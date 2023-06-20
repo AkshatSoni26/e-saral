@@ -7,7 +7,7 @@ import ChapterData from "../Subject/Chapter Data/ChapterData";
 import SideBar from "./Side Bar/SideBar.js";
 import "../CSS/carsoul.css";
 import SubjectHeader from "./SubjectHeader";
-import SpinnerForLoad from "../Spinner";
+import SpinnerForLoad from "../Spinner/Spinner";
 
 
 
